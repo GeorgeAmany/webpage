@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — CV</title>
+  <meta name="description" content="Personal resume of a Flutter developer." />
+  <meta property="og:title" content="Your Name — CV" />
+  <meta property="og:description" content="Personal resume of a Flutter developer." />
+  <meta property="og:type" content="website" />
+  <meta name="color-scheme" content="dark light">
+  <style>
+    :root{
+      --bg: #0b0e14; /* dark */
+      --card: #121826;
+      --text: #e6e7ea;
+      --muted:#99a1b3;
+      --accent:#7c3aed;
+      --accent-2:#22c55e;
+      --border:#2a3142;
+      --chip:#1a2336;
+    }
+    :root.light{
+      --bg: #f7f7fb; /* light */
+      --card:#ffffff;
+      --text:#121316;
+      --muted:#444a57;
+      --accent:#6d28d9;
+      --accent-2:#16a34a;
+      --border:#e6e7ee;
+      --chip:#f1f2f7;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg); color: var(--text);
+    }
+    a{color:inherit}
+    .container{max-width:980px;margin:0 auto;padding:32px 20px}
+    header{
+      display:grid; grid-template-columns: 96px 1fr auto; gap:20px; align-items:center; position:sticky; top:0; backdrop-filter:saturate(120%) blur(6px);
+      border-bottom:1px solid var(--border); padding:14px 0; background: color-mix(in srgb, var(--bg) 88%, transparent);
+      z-index:10
+    }
+    .avatar{width:84px;height:84px;border-radius:16px;overflow:hidden;border:1px solid var(--border); background:var(--card); display:grid; place-items:center}
+    .avatar svg{width:48px;height:48px;opacity:.8}
+    .title h1{margin:0;font-size:26px;line-height:1.2}
+    .title p{margin:6px 0 0;color:var(--muted)}
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{border:1px solid var(--border); background:var(--card); color:var(--text); padding:10px 14px; border-radius:10px; text-decoration:none; display:inline-flex; gap:10px; align-items:center}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2)); border-color:transparent}
+    .btn:hover{transform:translateY(-1px)}
+    main{display:grid; grid-template-columns: 1.4fr .9fr; gap:22px; margin-top:22px}
+    section{background:var(--card); border:1px solid var(--border); border-radius:16px; padding:20px}
+    h2{margin:0 0 14px; font-size:18px; letter-spacing:.2px}
+    .chips{display:flex;flex-wrap:wrap;gap:10px}
+    .chip{background:var(--chip); border:1px solid var(--border); padding:6px 10px; border-radius:999px; font-size:13px}
+    .list{display:grid;gap:16px}
+    .item h3{margin:0 0 4px; font-size:16px}
+    .meta{color:var(--muted); font-size:13px}
+    .grid-2{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+    .footer{color:var(--muted); text-align:center; margin:28px 0}
+    /* timeline */
+    .timeline{position:relative; padding-left:18px}
+    .timeline:before{content:""; position:absolute; left:7px; top:2px; bottom:2px; width:2px; background:var(--border)}
+    .dot{position:absolute; left:2px; width:10px; height:10px; border-radius:50%; background:var(--accent)}
+    .item{position:relative; padding-left:16px}
+    .item .dot{top:6px}
+
+    /* responsive */
+    @media (max-width: 880px){
+      main{grid-template-columns:1fr}
+      header{grid-template-columns:64px 1fr auto}
+      .avatar{width:64px;height:64px}
+    }
+
+    /* print */
+    @media print{
+      header{position:static; background:none; border:none}
+      .btn, .actions{display:none !important}
+      body{background:#fff;color:#000}
+      section{page-break-inside:avoid}
+      .container{max-width:100%; padding:0}
+    }
+  </style>
+  <script>
+    // theme persistence
+    const themeKey = 'cvTheme';
+    function setTheme(mode){
+      const root = document.documentElement;
+      if(mode==='light'){ root.classList.add('light'); }
+      else{ root.classList.remove('light'); }
+      localStorage.setItem(themeKey, mode);
+    }
+    function toggleTheme(){
+      const isLight = document.documentElement.classList.contains('light');
+      setTheme(isLight? 'dark':'light');
+    }
+    (function init(){
+      const saved = localStorage.getItem(themeKey);
+      if(saved){ setTheme(saved); }
+      // prefers-color-scheme as fallback
+      else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches){
+        setTheme('light');
+      }
+    })();
+    function printCV(){ window.print(); }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"Person",
+      "name":"Your Name",
+      "jobTitle":"Flutter Developer",
+      "url":"https://example.com",
+      "email":"mailto:you@example.com"
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="avatar" aria-hidden="true">
+        <!-- Simple inline avatar icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <circle cx="12" cy="8" r="4"></circle>
+          <path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+      </div>
+      <div class="title">
+        <h1>Your Name</h1>
+        <p>Flutter Developer • Dart • Clean Architecture • Cubit/BLoC • Dio • Firebase • iOS & Android</p>
+      </div>
+      <div class="actions">
+        <a class="btn" href="#contact" title="Contact">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10v6a2 2 0 0 1-2 2H5l-4 4V6a2 2 0 0 1 2-2h11"/></svg>
+          Contact</a>
+        <button class="btn" onclick="toggleTheme()" title="Toggle theme">🌗 Theme</button>
+        <button class="btn primary" onclick="printCV()" title="Download PDF">⬇️ Save as PDF</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="about">
+        <h2>About</h2>
+        <p>
+          I’m a Flutter developer focused on building smooth, scalable apps with clean architecture, reactive state (Cubit/BLoC), and solid CI/CD.
+          I care about performance, accessibility, and delightful UX.
+        </p>
+        <div class="grid-2" style="margin-top:12px">
+          <div>
+            <div class="meta">Location</div>
+            <div>Cairo, Egypt (Remote‑friendly)</div>
+          </div>
+          <div>
+            <div class="meta">Experience</div>
+            <div>3+ years</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h2>Experience</h2>
+        <div class="list timeline">
+          <article class="item">
+            <span class="dot" aria-hidden="true"></span>
+            <h3>Flutter Developer — Company Name</h3>
+            <div class="meta">Jan 2023 – Present · Remote</div>
+            <ul>
+              <li>Built multi‑module Flutter apps using Cubit and dependency injection.</li>
+              <li>Integrated REST APIs with Dio + interceptors, secure storage, and graceful error handling.</li>
+              <li>Implemented localization (en/ar), theming, and accessibility across the app.</li>
+            </ul>
+          </article>
+          <article class="item">
+            <span class="dot" aria-hidden="true"></span>
+            <h3>Junior Flutter Developer — Previous Co.</h3>
+            <div class="meta">Aug 2021 – Dec 2022 · On‑site</div>
+            <ul>
+              <li>Delivered features end‑to‑end: UI, state, data, and testing.</li>
+              <li>Migrated legacy setState to Cubit architecture.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>Selected Projects</h2>
+        <div class="list">
+          <article class="item">
+            <h3>ShopMate — E‑commerce App</h3>
+            <div class="meta">Flutter · Dio · Hive · GoRouter · Clean Architecture</div>
+            <p>Multi‑vendor store with offline cart, product search with suggestions, and secure checkout. Implemented custom Dio interceptors and error flows.</p>
+          </article>
+          <article class="item">
+            <h3>TaskFlow — Team Productivity</h3>
+            <div class="meta">Flutter Web + Mobile · Cubit · Firebase</div>
+            <p>Real‑time boards and notifications; responsive layout for web/tablet/phone with shared codebase.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>Skills</h2>
+        <div class="chips" aria-label="Skills">
+          <span class="chip">Flutter</span>
+          <span class="chip">Dart</span>
+          <span class="chip">Cubit/BLoC</span>
+          <span class="chip">Dio + Interceptors</span>
+          <span class="chip">GoRouter</span>
+          <span class="chip">Hive</span>
+          <span class="chip">Clean Architecture</span>
+          <span class="chip">REST APIs</span>
+          <span class="chip">Firebase</span>
+          <span class="chip">Unit & Widget Tests</span>
+          <span class="chip">Localization (ar/en)</span>
+        </div>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+        <div class="list">
+          <article class="item">
+            <h3>B.Sc. in Computer Science</h3>
+            <div class="meta">University Name · Graduated 2021</div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Open to full‑time and freelance opportunities.</p>
+        <ul>
+          <li>Email: <a href="mailto:you@example.com">you@example.com</a></li>
+          <li>GitHub: <a href="https://github.com/yourhandle" target="_blank" rel="noreferrer">github.com/yourhandle</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/yourhandle" target="_blank" rel="noreferrer">linkedin.com/in/yourhandle</a></li>
+      </ul>
+      </section>
+    </main>
+
+    <p class="footer">© <span id="y"></span> Your Name — Built with HTML/CSS/JS • Print this page to save a PDF</p>
+  </div>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
