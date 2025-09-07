@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>George Amany — Flutter Developer</title>
+  <meta name="description" content="Portfolio & CV of George Amany — Flutter Developer.">
+  <meta name="color-scheme" content="dark light">
+  <style>
+    :root{
+      --bg:#0b0f1a; --card:#0f1626; --text:#ecf0f3; --muted:#a9b0c3;
+      --accent:#7c3aed; --accent2:#22c55e; --border:#1f2a44; --chip:#121b2d;
+      --glass:rgba(15,22,38,.6); --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    :root.light{
+      --bg:#f6f7fb; --card:#ffffff; --text:#111319; --muted:#495061;
+      --accent:#6d28d9; --accent2:#16a34a; --border:#e7e9f1; --chip:#f1f3f9;
+      --glass:rgba(255,255,255,.7); --shadow:0 10px 30px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      background:var(--bg); color:var(--text); overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px; margin:0 auto; padding:0 20px}
+    .backdrop{
+      position:fixed; inset:0; z-index:-1;
+      background: radial-gradient(1200px 800px at 10% -10%, rgba(124,58,237,.35), transparent),
+                  radial-gradient(900px 600px at 110% 10%, rgba(34,197,94,.25), transparent),
+                  radial-gradient(700px 500px at 50% 120%, rgba(59,130,246,.25), transparent);
+      animation: floatbg 16s ease-in-out infinite alternate;
+    }
+    @keyframes floatbg{ 0%{transform:translateY(0)} 100%{transform:translateY(-20px)} }
+    header{
+      position:sticky; top:0; backdrop-filter:saturate(120%) blur(8px);
+      background:color-mix(in srgb, var(--bg) 70%, transparent);
+      border-bottom:1px solid var(--border);
+      z-index:50;
+    }
+    nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand h1{margin:0; font-size:18px; letter-spacing:.4px}
+    .actions{display:flex; gap:10px; flex-wrap:wrap}
+    .btn{border:1px solid var(--border); background:var(--glass); padding:9px 12px; border-radius:999px; display:inline-flex; align-items:center; gap:8px}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2)); border-color:transparent}
+    .btn:hover{transform:translateY(-1px)}
+    .theme{cursor:pointer}
+    section{padding:64px 0}
+    h2{margin:0 0 16px; font-size:24px}
+    .grid{display:grid; gap:18px}
+    .card{background:var(--glass); border:1px solid var(--border); border-radius:16px; padding:20px; box-shadow:var(--shadow)}
+    .hero{min-height:100svh; display:grid; align-items:center}
+    .hero-inner{display:grid; grid-template-columns: 1.2fr .8fr; gap:26px}
+    .intro{background: radial-gradient(500px 300px at 50% 50%, rgba(124,58,237,.6), transparent);
+      border:1px solid var(--border); border-radius:20px; padding:24px; position:relative; overflow:hidden}
+    .halo{position:absolute; inset:-40px; background: conic-gradient(from 0deg, rgba(124,58,237,.25), rgba(34,197,94,.25), rgba(59,130,246,.25), rgba(124,58,237,.25));
+      filter: blur(28px); animation: spin 18s linear infinite}
+    @keyframes spin{to{transform:rotate(1turn)}}
+    .hero h2{font-size:46px; line-height:1.1; margin:0}
+    .subtitle{color:var(--muted); margin-top:8px}
+    .badges{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 6px}
+    .badge{padding:8px 12px;border-radius:999px;background:var(--chip);border:1px solid var(--border);font-size:13px}
+    .profile{display:grid;place-items:center}
+    .avatar{width: 280px; aspect-ratio:1; border-radius:999px; overflow:hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.4); animation: float 6s ease-in-out infinite;
+      border: 3px solid color-mix(in srgb, var(--accent) 60%, var(--accent2) 40%); background: var(--chip);
+    }
+    .avatar img{width:100%; height:100%; object-fit:cover; object-position:center}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .timeline{position:relative; padding-left:18px}
+    .timeline:before{content:""; position:absolute; left:7px; top:4px; bottom:4px; width:2px; background:var(--border)}
+    .dot{position:absolute; left:2px; width:10px; height:10px; border-radius:50%; background:var(--accent)}
+    .item{position:relative; padding-left:16px}
+    .item .dot{top:6px}
+    .item h3{margin:0 0 4px; font-size:18px}
+    .meta{color:var(--muted); font-size:13px}
+    .chips{display:flex; flex-wrap:wrap; gap:10px}
+    .chip{background:var(--chip); border:1px solid var(--border); padding:7px 10px; border-radius:999px; font-size:13px}
+    footer{padding:36px 0; color:var(--muted); text-align:center}
+    .reveal{opacity:0; transform:translateY(16px); transition:all .7s ease}
+    .reveal.visible{opacity:1; transform:none}
+    @media (max-width: 980px){
+      .hero-inner{grid-template-columns:1fr}
+      .profile{order:-1}
+      .hero h2{font-size:36px}
+      .avatar{width:220px}
+    }
+  </style>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand"><h1>George Amany — Flutter Developer</h1></div>
+        <div class="actions">
+          <a class="btn" href="#contact">Contact</a>
+          <a class="btn" href="#projects">Projects</a>
+          <a class="btn primary" href="#about">About</a>
+          <button class="btn theme" id="themeBtn">🌗 Theme</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="intro card reveal">
+          <div class="halo" aria-hidden="true"></div>
+          <h2>Building apps with <span style="background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;color:transparent">precision</span> & <span style="background:linear-gradient(135deg,var(--accent2),var(--accent));-webkit-background-clip:text;color:transparent">speed</span>.</h2>
+          <p class="subtitle">Clean Architecture • Cubit/BLoC • Dio • Firebase • iOS & Android</p>
+          <div class="badges">
+            <span class="badge">Flutter</span><span class="badge">Dart</span><span class="badge">REST APIs</span><span class="badge">Clean Code</span><span class="badge">Git</span>
+          </div>
+        </div>
+        <div class="profile reveal">
+          <div class="avatar"><img src="george.jpg" alt="George Amany portrait"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container grid">
+        <div class="card reveal">
+          <h2>About</h2>
+          <p>Mobile Application Developer specializing in Flutter, Firebase, and REST APIs. Experienced in building and deploying production apps, including e‑commerce and utilities, and contributing to community workshops. Passionate about performance, clean code, and impactful mobile solutions.</p>
+        </div>
+        <div class="card grid reveal" style="grid-template-columns:1fr 1fr; gap:14px">
+          <div><div class="meta">Location</div><div>Cairo, Egypt</div></div>
+          <div><div class="meta">Role</div><div>Flutter Developer</div></div>
+          <div><div class="meta">Email</div><div><a href="mailto:georgeamany5@gmail.com">georgeamany5@gmail.com</a></div></div>
+          <div><div class="meta">LinkedIn</div><div>LinkedIn: <a href="https://www.linkedin.com/in/george-amany-53b148219/" target="_blank" rel="noreferrer">My LinkedIn</a></div></div>
+          <div><div class="meta">GitHub</div><div>GitHub: <a href="https://github.com/GeorgeAmany" target="_blank" rel="noreferrer">My GitHub</a></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="container">
+        <div class="card reveal">
+          <h2>Experience</h2>
+          <div class="timeline">
+            <article class="item">
+              <span class="dot"></span>
+              <h3>Flutter Developer — Neural Design Studios</h3>
+              <div class="meta">Full‑time · Jun 2024 – Present · Cairo, Egypt</div>
+              <ul>
+                <li>Built and deployed Flutter mobile apps with scalable architecture.</li>
+                <li>Developed cross‑platform desktop apps for macOS and Windows using Flutter.</li>
+                <li>Integrated Firebase and REST APIs for auth, data, and real‑time features.</li>
+                <li>Applied Clean Architecture and Cubit/Bloc for performance and maintainability.</li>
+                <li>Published open‑source package: <a href="https://pub.dev/packages/animated_contact_us" target="_blank" rel="noreferrer">animated_contact_us</a>.</li>
+              </ul>
+            </article>
+            <article class="item">
+              <span class="dot"></span>
+              <h3>Flutter Developer — Neural Design Studios</h3>
+              <div class="meta">Part‑time · Feb 2024 – Jun 2024 · Cairo, Egypt</div>
+              <ul><li>Collaborated with a team to deliver responsive, high‑performance Flutter apps.</li></ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container">
+        <div class="card reveal">
+          <h2>Skills</h2>
+          <div class="chips">
+            <span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">Firebase</span><span class="chip">REST APIs</span>
+            <span class="chip">Cubit/BLoC</span><span class="chip">Clean Architecture</span><span class="chip">Git</span><span class="chip">Postman</span><span class="chip">Clean Code</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container">
+        <div class="card reveal">
+          <h2>Published Apps</h2>
+          <ul>
+            <li><strong>Noor Institute</strong> — 
+              <a href="https://play.google.com/store/apps/details?id=com.softera.noor_academy&hl=en" target="_blank" rel="noreferrer">Google Play</a> · 
+              <a href="https://apps.apple.com/eg/app/noor-institute/id6463731504" target="_blank" rel="noreferrer">App Store</a>
+            </li>
+            <li><strong>Al Rassi</strong> — 
+              <a href="https://play.google.com/store/apps/details?id=com.appsbunches.alrassiapp&hl=en" target="_blank" rel="noreferrer">Google Play</a> · 
+              <a href="https://apps.apple.com/eg/app/%D8%A7%D9%84%D8%B1%D8%B3%D9%8A-%D9%84%D9%84%D8%A7%D8%B4%D8%AC%D8%A7%D8%B1-%D8%A7%D9%84%D8%B5%D9%86%D8%A7%D8%B9%D9%8A%D8%A9/id6736564188" target="_blank" rel="noreferrer">App Store</a>
+            </li>
+            <li><strong>Schupply</strong> — 
+              <a href="https://play.google.com/store/apps/details?id=com.schupply.app&hl=en" target="_blank" rel="noreferrer">Google Play</a>
+            </li>
+            <li><strong>Al Wefaq Foods</strong> — 
+              <a href="https://play.google.com/store/apps/details?id=com.alwefaqfoods.app" target="_blank" rel="noreferrer">Google Play</a>
+            </li>
+            <li><strong>Zahran</strong> — Mobile App</li>
+            <li><strong>Zahran</strong> — Desktop App</li>
+            <li><strong>Fuse</strong> — Mobile App</li>
+            <li><strong>Proposal</strong> — Desktop App</li>
+            <li><strong>E‑Rego</strong> — Mobile App</li>
+          </ul>
+          <h2 style="margin-top:18px">Open‑Source</h2>
+          <ul>
+            <li><strong>animated_contact_us</strong> — <a href="https://pub.dev/packages/animated_contact_us" target="_blank" rel="noreferrer">pub.dev</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTIVITIES / COURSES -->
+    <section id="activities">
+      <div class="container grid">
+        <div class="card reveal">
+          <h2>Activities</h2>
+          <ul>
+            <li>Flutter workshop — Alalmiya Alhura, El Mansoura.</li>
+            <li>Flutter Forward Extended Cloud Egypt'23 — GDG Cloud Egypt.</li>
+            <li>Online Flutter workshop — Machinfy.</li>
+            <li>Penetration Tester Training — Instant (1 month).</li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <h2>Courses</h2>
+          <ul>
+            <li>Full Flutter Diploma (100 hours) — Array.</li>
+            <li>Flutter & Dart — Udemy.</li>
+            <li>Cyber Security Diploma (150 hours) — Instant.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="card reveal">
+          <h2>Contact</h2>
+          <p>Open to full‑time roles and freelance projects.</p>
+          <div class="chips">
+            <a class="chip" href="mailto:georgeamany5@gmail.com">📧 georgeamany5@gmail.com</a>
+            <a class="chip" href="https://www.linkedin.com/in/george-amany-53b148219/" target="_blank" rel="noreferrer">My LinkedIn</a>
+            <a class="chip" href="https://github.com/GeorgeAmany" target="_blank" rel="noreferrer">My GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container">© 2025 George Amany</div></footer>
+
+  <script>
+    const root=document.documentElement, key='theme';
+    function setTheme(mode){ mode==='light' ? root.classList.add('light') : root.classList.remove('light'); localStorage.setItem(key, mode); }
+    document.getElementById('themeBtn').onclick=()=>{ const next = root.classList.contains('light') ? 'dark' : 'light'; setTheme(next); };
+    (function init(){ const saved=localStorage.getItem(key); if(saved) setTheme(saved); })();
+    const io=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} }); },{threshold:.18});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
