@@ -1,0 +1,24 @@
+GEORGE AMANY — Flutter Developer
+Cairo, Egypt | georgeamany5@gmail.com | +20 127 003 7845 | LinkedIn | GitHub
+
+SUMMARY
+Production Flutter engineer shipping mobile & desktop apps across education, e-commerce, food, and influencer marketing. Clean Architecture, BLoC/Cubit, REST APIs, Firebase. Multiple Play Store & App Store releases. 2 pub.dev packages.
+
+EXPERIENCE
+Flutter Developer — Neural Design Studios (Full-time, Jun 2024–Present)
+• Shipped 10+ production apps; primary contributor on Fuse (185 commits), Taleem (300+ commits), Noor Institute (v3.7.0)
+• Built desktop POS & proposal tools for macOS/Windows
+• Set up GitHub Actions CI for automated APK builds
+• Published animated_contact_us & liquid_wave_indicator on pub.dev
+
+Flutter Developer — Neural Design Studios (Part-time, Feb–Jun 2024)
+• Delivered responsive Flutter apps with team; optimized performance & state management
+
+TOP SKILLS
+Flutter · Dart · Clean Architecture · BLoC/Cubit · Dio · Firebase · Hive · GoRouter · Stripe · Git · CI/CD · Desktop Flutter
+
+SELECTED APPS
+Noor Institute (Play/App Store) · Schupply · Al Wefaq Foods · Zahran · Fuse · Taleem · Binge · Al Rassi
+
+EDUCATION
+BSc Computer Science — Modern Academy Maadi (2022)

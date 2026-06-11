@@ -1,0 +1,165 @@
+GEORGE AMANY — Senior Flutter Developer
+Detailed Senior-Level CV (Evidence-Based)
+
+═══════════════════════════════════════════════════════════════
+CONTACT
+Cairo, Egypt | georgeamany5@gmail.com | +20 127 003 7845
+LinkedIn: linkedin.com/in/george-amany-53b148219
+GitHub: github.com/GeorgeAmany
+
+═══════════════════════════════════════════════════════════════
+EXECUTIVE SUMMARY
+
+Senior Flutter engineer with 2+ years of professional production experience at Neural Design Studios, delivering cross-platform mobile and desktop applications across education, e-commerce, food services, influencer marketing, and on-demand services. Demonstrates consistent application of Clean Architecture, repository patterns, dependency injection, and typed REST clients. Primary contributor on multiple codebases with 630+ documented commits across flagship projects. Published production apps to Google Play and the App Store and authored open-source packages on pub.dev.
+
+═══════════════════════════════════════════════════════════════
+TECHNICAL PROFILE
+
+Architecture: Feature-first Clean Architecture (data/domain/presentation), Repository Pattern, Use Cases, MVVM/Cubit, MobX (IQonic templates)
+State Management: flutter_bloc, Cubit, Provider, MobX
+Networking: Dio, Retrofit, pretty_dio_logger, internet_connection_checker
+Local Storage: Hive, Floor, SQLite (sqflite), flutter_secure_storage
+DI: GetIt, Injectable
+Navigation: GoRouter
+Immutability: Freezed, Dartz (Either)
+Backend Services: Firebase (Auth, Firestore, Realtime DB, Messaging, Crashlytics, Analytics, In-App Messaging), OneSignal, Pusher Channels
+Payments: Stripe, Amazon Payment Services (Flutter), Tap/go_sell SDK, multi-gateway (Stripe, Razorpay, PayPal, Paystack, Flutterwave)
+Maps & Location: google_maps_flutter, geolocator
+Desktop: window_manager, printing, pdf, flutter_to_pdf, file_selector, connectivity_plus
+CI/CD: GitHub Actions (Flutter 3.35.7, automated debug APK builds, artifact upload)
+Localization: easy_localization, hijri calendar support
+Real-Time: Pusher Channels, Firebase Realtime Database
+Media: video_player, chewie, media_kit, audioplayers, Storyly
+Analytics: Firebase Analytics, Microsoft Clarity
+
+═══════════════════════════════════════════════════════════════
+PROFESSIONAL EXPERIENCE
+
+Flutter Developer — Neural Design Studios
+Full-time | Cairo, Egypt | Jun 2024 – Present
+
+Achievement Highlights:
+• Shipped production Flutter applications across 6+ business domains with scalable, feature-modular architecture
+• Primary developer on Fuse influencer platform (185 commits, Jun 2024 – Jan 2026): dual-role apps for agencies and influencers with Injectable DI, Freezed models, Firebase Auth/Realtime DB, Storyly integration
+• Lead developer on Taleem ecosystem (298 commits across student + employee apps): Islamic education platform with Quran SQLite databases (604-page mushaf), attendance, memorization tracking, teacher evaluations; implemented GitHub Actions CI pipeline with Flutter 3.35.7 for automated debug APK builds on every push
+• Core contributor on Noor Institute (63 commits, v3.7.0+49): education management with Stripe payment integration, Pusher real-time chat, Floor ORM local caching, Retrofit typed API client, Syncfusion calendar
+• Built cross-platform desktop applications: Zahran POS (19 commits) with offline invoice sync, PDF generation/printing, Hive persistence; Proposal Desktop (23 commits) for business PDF proposal generation
+• Delivered e-commerce apps Schupply (27 commits) and Zahran Mobile (26 commits) with Clean Architecture, Dio REST, Hive, social auth, deep links
+• Contributed to Binge food subscription app (v2.1.3+275): Firebase Crashlytics/Analytics, Amazon Payment Services, Microsoft Clarity
+• Built Al Wefaq Foods WebView app with Firebase + OneSignal push and in-app messaging
+• Customized Horse Time on-demand booking app (12 commits): multi-gateway payments, Firebase, maps, speech-to-text
+• Published OSS packages: animated_contact_us (v0.0.8, 12 commits) and liquid_wave_indicator (v0.2.2, 14 commits) on pub.dev
+
+Maintainability & Code Quality Practices:
+• Consistent feature module boundaries (data/domain/presentation)
+• Dependency injection via GetIt/Injectable for testability
+• Typed API clients with Retrofit code generation
+• Freezed for immutable state models
+• Centralized error handling and network connectivity checks
+• Localization-ready string management
+• Structured git workflow with descriptive commit history
+
+Flutter Developer — Neural Design Studios
+Part-time | Cairo, Egypt | Feb 2024 – Jun 2024
+• Collaborated with cross-functional team on responsive Flutter application delivery
+• Implemented performance-focused UI and state management patterns
+
+═══════════════════════════════════════════════════════════════
+PROJECT PORTFOLIO (Evidence-Based)
+
+1. NOOR INSTITUTE — Education / Institute Management
+   Domain: Student-teacher platform for courses, homework, schedules, evaluations, invoices, chat
+   Challenges: Payment processing (Stripe SDK), real-time messaging (Pusher), offline data (Floor ORM), video content, calendar scheduling
+   Architecture: Feature-first Clean Architecture, BLoC, Repository + UseCase pattern, Retrofit API layer
+   Tech: Flutter 3.7+, BLoC, GetIt, Dio, Retrofit, Floor, Stripe, Pusher, Firebase Messaging, Freezed, Easy Localization, Syncfusion Calendar
+   Evidence: v3.7.0+49, api.noor-institute.site, 63 commits by GeorgeAmany
+   Stores: Google Play, App Store
+
+2. FUSE — Influencer Marketing Platform
+   Domain: Dual-app platform connecting agencies, users, and influencers for content, profiles, service requests
+   Challenges: Multi-role architecture, social auth, story integration, scalable feature sharing between agency/influencer apps
+   Architecture: Clean Architecture with Cubit, Injectable DI, Freezed, shared common_requests module
+   Tech: Cubit, Injectable, GetIt, Dio, Hive, Firebase Auth/DB/Messaging, Storyly, GoRouter, Lottie
+   Evidence: 185 commits by GeorgeAmany, documented README with architecture diagram
+   Platform: Mobile (Neural Design Studios)
+
+3. TALEEM STUDENT & EMPLOYEES — Islamic Education
+   Domain: Student portal (grades, absence, certificates, diary, Quran mushaf) + Staff portal (halaqas, attendance, memorization, teacher licenses, evaluations)
+   Challenges: Large Quran asset management (604 pages, SQLite glyph DB), dual-app codebase, role-based permissions, CI automation
+   Architecture: Clean Architecture, BLoC, shared core with feature modules, permissions layer (employees)
+   Tech: BLoC, Dio, Hive, SQLite, Firebase Messaging, Fl Chart, Table Calendar, Hijri dates, Turnable Page
+   CI/CD: GitHub Actions — Flutter 3.35.7, debug APK build, artifact upload, Gradle CI tuning
+   Evidence: 170 + 128 commits by GeorgeAmany
+   Platform: Mobile Apps
+
+4. SCHUPPLY — School Supplies E-Commerce
+   Domain: School/grade-based supply package ordering
+   Challenges: School-specific catalog filtering, cash payment flow, Apple Sign-In, deep linking
+   Architecture: Clean Architecture (core/data/domain/network + feature modules)
+   Tech: BLoC, Dio, Hive, GoRouter, Firebase Messaging, Google/Apple Sign-In, App Links
+   Evidence: 27 commits by GeorgeAmany, schupply-api backend
+   Store: Google Play
+
+5. ZAHRAN MOBILE & DESKTOP POS — E-Commerce & Point of Sale
+   Domain: Mobile shopping + desktop POS with offline invoice management
+   Challenges: Offline-first desktop sync, PDF invoice generation/printing, secure credential storage
+   Architecture: Shared Clean Architecture template; desktop adds window_manager, printing, connectivity_plus
+   Tech: BLoC, Dio, Hive, GoRouter, Window Manager, PDF, Printing, Flutter Secure Storage
+   Evidence: 26 mobile + 19 desktop commits by GeorgeAmany
+   Platform: Mobile & Desktop
+
+6. BINGE — Food Subscription & Meal Ordering
+   Domain: Dishes, cart, subscriptions, wallet, loyalty program, support tickets
+   Challenges: Payment gateway integration, analytics/crash reporting, onboarding tutorials
+   Architecture: Clean Architecture with core/network/services
+   Tech: BLoC, Dio, Hive, Firebase Crashlytics/Analytics/Messaging, Amazon Payment Services, Clarity, Google Maps
+   Evidence: v2.1.3+275, api.binge-app.com, 3 commits by GeorgeAmany (team project)
+   Platform: Production App
+
+7. AL WEFAQ FOODS — Food Brand Mobile WebView
+   Domain: Mobile wrapper for alwefaq.vocus-dev2.com with push notifications
+   Architecture: MobX stores, screen/component layer, WebView-centric
+   Tech: flutter_inappwebview, MobX, Firebase Messaging/In-App Messaging, OneSignal, QR Scanner
+   Evidence: 5 commits by GeorgeAmany, v1.2.0+2
+   Store: Google Play
+
+8. PROPOSAL DESKTOP — Business Proposal Builder
+   Domain: PDF proposal generation for service packages, company info, payment methods
+   Architecture: Desktop feature modules with PDF core utilities
+   Tech: BLoC, Dio, Hive, Window Manager, PDF, Printing, flutter_to_pdf, File Selector
+   Evidence: 23 commits by GeorgeAmany
+   Platform: Desktop (macOS/Windows)
+
+9. HORSE TIME — On-Demand Service Booking
+   Domain: User-side booking for services with chat, payments, shop
+   Architecture: IQonic Handyman-style MobX stores, screen-based structure
+   Tech: MobX, Firebase Auth/Firestore/Storage/Crashlytics, multi-payment gateways, Google Maps, Speech-to-Text
+   Evidence: 12 commits by GeorgeAmany, v1.0.6+7
+   Platform: Mobile App
+
+10. OPEN SOURCE — pub.dev Packages
+    animated_contact_us (v0.0.8): Animated contact/social link UI widget
+    liquid_wave_indicator (v0.2.2): Animated liquid wave progress indicator
+    Evidence: 12 + 14 commits, published on pub.dev, MIT license
+
+11. AL RASSI — Industrial/Manufacturing (Published App)
+    Evidence: Listed on portfolio with Google Play & App Store links (com.appsbunches.alrassiapp)
+    Note: Source code not present in analyzed workspace
+
+═══════════════════════════════════════════════════════════════
+EDUCATION
+Bachelor's Degree, Computer Science — Modern Academy Maadi, Cairo (Jan 2018 – May 2022)
+
+COURSES & CERTIFICATIONS
+• Full Flutter Diploma, 100 hours — Array (Sep 2022)
+• Flutter & Dart — The Complete Flutter App Development — Udemy
+• Cyber Security Diploma, 150 hours — Instant
+
+COMMUNITY & ACTIVITIES
+• Flutter workshop — Alalmiya Alhura, El Mansoura
+• Flutter Forward Extended Cloud Egypt '23 — GDG Cloud Egypt
+• Online Flutter workshop — Machinfy
+• Penetration Tester Training, 1 month — Instant
+
+LANGUAGES
+Arabic (Native) | English (Professional Working Proficiency)

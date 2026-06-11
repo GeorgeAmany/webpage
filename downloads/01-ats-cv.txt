@@ -1,0 +1,50 @@
+GEORGE AMANY
+Senior Flutter Developer | Mobile & Desktop Cross-Platform Engineer
+Cairo, Egypt | georgeamany5@gmail.com | +20 127 003 7845
+LinkedIn: linkedin.com/in/george-amany-53b148219 | GitHub: github.com/GeorgeAmany
+
+PROFESSIONAL SUMMARY
+Flutter Developer with Bachelor's degree in Computer Science and production experience shipping mobile and desktop applications. Expertise in Clean Architecture, BLoC/Cubit state management, REST API integration (Dio, Retrofit), Firebase, local storage (Hive, Floor, SQLite), cross-platform desktop (macOS, Windows), payment integrations (Stripe, Amazon Payment Services), and CI/CD (GitHub Actions). Published apps on Google Play and App Store. Author of pub.dev packages animated_contact_us and liquid_wave_indicator.
+
+CORE SKILLS
+Flutter, Dart, Clean Architecture, BLoC, Cubit, GetIt, Injectable, Dio, Retrofit, REST APIs, Firebase, Firestore, Firebase Messaging, Firebase Crashlytics, Firebase Analytics, Hive, Floor, SQLite, GoRouter, Freezed, Dartz, Stripe, Pusher, Google Sign-In, Apple Sign-In, Google Maps, Easy Localization, Flutter Desktop, Window Manager, PDF, Printing, Git, GitHub Actions, CI/CD, Postman, MobX, Provider, Clean Code, Code Review, Dependency Injection, Repository Pattern
+
+PROFESSIONAL EXPERIENCE
+
+Flutter Developer | Neural Design Studios | Cairo, Egypt
+Full-time | Jun 2024 – Present
+- Built and deployed production Flutter mobile and desktop apps using Clean Architecture with feature-first data/domain/presentation layers
+- Led Fuse influencer marketing platform development (185+ commits): dual-app for agencies and influencers with Cubit, Injectable, Freezed, Dio, Firebase
+- Developed Taleem student and employee Islamic education apps (300+ combined commits) with REST API, Quran SQLite databases, and GitHub Actions CI for automated APK builds
+- Enhanced Noor Institute app (v3.7.0): Stripe payments, Pusher real-time chat, Floor local DB, Retrofit API, Firebase push notifications
+- Delivered Zahran desktop POS with offline invoice sync, PDF printing, and Hive local storage
+- Built Proposal Desktop PDF document builder for business proposals
+- Integrated REST APIs, Firebase, social auth, maps, and payment gateways across Schupply, Zahran, Binge, and Al Wefaq Foods
+- Published open-source packages on pub.dev: animated_contact_us and liquid_wave_indicator
+
+Flutter Developer | Neural Design Studios | Cairo, Egypt
+Part-time | Feb 2024 – Jun 2024
+- Collaborated with development team to deliver responsive, production-ready Flutter applications
+- Implemented scalable state management and UI performance optimizations
+
+KEY PROJECTS
+
+Noor Institute | Education | Flutter, BLoC, Dio, Retrofit, Floor, Stripe, Pusher, Firebase | Google Play, App Store
+Fuse | Influencer Marketing | Flutter, Cubit, Injectable, Freezed, Dio, Firebase, Storyly | Mobile App
+Taleem Student & Employees | Islamic Education | Flutter, BLoC, Dio, Hive, SQLite, Firebase, GitHub Actions CI | Mobile Apps
+Schupply | School Supplies E-Commerce | Flutter, BLoC, Dio, Hive, GoRouter, Firebase | Google Play
+Zahran Mobile & Desktop POS | E-Commerce & POS | Flutter, BLoC, Dio, Hive, PDF, Window Manager | Mobile & Desktop
+Binge | Food Subscription | Flutter, BLoC, Dio, Firebase Analytics, Amazon Payment Services | Production App
+Al Wefaq Foods | Food Brand | Flutter, WebView, Firebase, OneSignal | Google Play
+Proposal Desktop | Business Proposals | Flutter Desktop, BLoC, PDF, Printing | Desktop App
+Horse Time | On-Demand Services | Flutter, MobX, Firebase, Multi-Gateway Payments | Mobile App
+animated_contact_us & liquid_wave_indicator | Open Source | Flutter, pub.dev packages
+
+EDUCATION
+Bachelor's Degree, Computer Science — Modern Academy Maadi, Cairo (2022)
+
+COURSES
+Full Flutter Diploma (100 hours) — Array | Flutter & Dart — Udemy | Cyber Security Diploma (150 hours) — Instant
+
+LANGUAGES
+Arabic (Native) | English (Professional Working Proficiency)

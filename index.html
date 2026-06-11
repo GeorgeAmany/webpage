@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>George Amany — Senior Flutter Developer</title>
+  <meta name="description" content="Senior Flutter Developer specializing in Clean Architecture, mobile & desktop apps. Published on Google Play, App Store, and pub.dev. Cairo, Egypt.">
+  <meta name="theme-color" content="#07080f">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07080f;
+      --bg-2: #0c0e18;
+      --surface: rgba(255,255,255,.04);
+      --surface-hover: rgba(255,255,255,.07);
+      --border: rgba(255,255,255,.08);
+      --border-strong: rgba(255,255,255,.14);
+      --text: #f4f6fb;
+      --muted: #8b93a8;
+      --dim: #5c6478;
+      --violet: #8b5cf6;
+      --violet-soft: rgba(139,92,246,.18);
+      --cyan: #22d3ee;
+      --cyan-soft: rgba(34,211,238,.14);
+      --green: #34d399;
+      --green-soft: rgba(52,211,153,.14);
+      --pink: #f472b6;
+      --gradient: linear-gradient(135deg, #8b5cf6 0%, #22d3ee 50%, #34d399 100%);
+      --gradient-text: linear-gradient(135deg, #c4b5fd, #67e8f9, #6ee7b7);
+      --shadow: 0 24px 80px rgba(0,0,0,.45);
+      --radius: 20px;
+      --radius-sm: 12px;
+      --font-display: "Syne", system-ui, sans-serif;
+      --font-body: "Inter", system-ui, sans-serif;
+      --nav-h: 72px;
+      --ease: cubic-bezier(.22,1,.36,1);
+    }
+
+    :root.light {
+      --bg: #f4f6fc;
+      --bg-2: #e9edf7;
+      --surface: rgba(255,255,255,.72);
+      --surface-hover: rgba(255,255,255,.92);
+      --border: rgba(15,23,42,.08);
+      --border-strong: rgba(15,23,42,.14);
+      --text: #0f172a;
+      --muted: #475569;
+      --dim: #64748b;
+      --violet-soft: rgba(109,40,217,.1);
+      --cyan-soft: rgba(8,145,178,.1);
+      --green-soft: rgba(5,150,105,.1);
+      --shadow: 0 24px 80px rgba(15,23,42,.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 24px); }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--violet-soft); color: var(--text); }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { margin: 0; padding-left: 1.2rem; }
+    li + li { margin-top: .45rem; }
+
+    .noise {
+      pointer-events: none;
+      position: fixed; inset: 0; z-index: 0; opacity: .035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .aurora {
+      position: fixed; inset: 0; z-index: -2; overflow: hidden;
+      background:
+        radial-gradient(ellipse 80% 50% at 20% -10%, rgba(139,92,246,.28), transparent 60%),
+        radial-gradient(ellipse 60% 40% at 90% 10%, rgba(34,211,238,.18), transparent 55%),
+        radial-gradient(ellipse 50% 40% at 50% 100%, rgba(52,211,153,.12), transparent 50%),
+        var(--bg);
+    }
+
+    .orb {
+      position: absolute; border-radius: 50%; filter: blur(60px); opacity: .55;
+      animation: drift 18s var(--ease) infinite alternate;
+    }
+    .orb-1 { width: 420px; height: 420px; background: #7c3aed; top: -120px; left: -80px; }
+    .orb-2 { width: 360px; height: 360px; background: #0891b2; top: 20%; right: -100px; animation-delay: -6s; }
+    .orb-3 { width: 300px; height: 300px; background: #059669; bottom: 10%; left: 30%; animation-delay: -12s; }
+
+    @keyframes drift {
+      from { transform: translate(0, 0) scale(1); }
+      to { transform: translate(30px, -40px) scale(1.08); }
+    }
+
+    .container { width: min(1140px, calc(100% - 40px)); margin: 0 auto; }
+    .section { padding: 96px 0; position: relative; z-index: 1; }
+    .section-head { margin-bottom: 40px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--cyan); margin-bottom: 12px;
+    }
+    .eyebrow::before {
+      content: ""; width: 24px; height: 1px; background: var(--gradient);
+    }
+    h1, h2, h3, .display { font-family: var(--font-display); letter-spacing: -.02em; }
+    h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.1; margin: 0; font-weight: 700; }
+    h3 { font-size: 1.15rem; line-height: 1.3; margin: 0; font-weight: 700; }
+
+    .gradient-text {
+      background: var(--gradient-text);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+
+    /* NAV */
+    .nav-wrap {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      backdrop-filter: blur(18px) saturate(160%);
+      background: color-mix(in srgb, var(--bg) 72%, transparent);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow .3s var(--ease);
+    }
+    .nav-wrap.scrolled { box-shadow: 0 8px 32px rgba(0,0,0,.18); }
+    .nav { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo {
+      font-family: var(--font-display); font-weight: 800; font-size: 1.05rem;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .logo-mark {
+      width: 34px; height: 34px; border-radius: 10px; background: var(--gradient);
+      display: grid; place-items: center; font-size: 14px; font-weight: 800; color: #07080f;
+      box-shadow: 0 8px 24px rgba(139,92,246,.35);
+    }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links a {
+      padding: 8px 14px; border-radius: 999px; font-size: 14px; font-weight: 500;
+      color: var(--muted); transition: .25s var(--ease);
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--surface); }
+    .nav-actions { display: flex; align-items: center; gap: 8px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 10px 18px; border-radius: 999px; font-size: 14px; font-weight: 600;
+      border: 1px solid var(--border); background: var(--surface);
+      transition: transform .25s var(--ease), background .25s, border-color .25s, box-shadow .25s;
+      cursor: pointer; white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-2px); background: var(--surface-hover); border-color: var(--border-strong); }
+    .btn-primary {
+      border: none; color: #07080f; background: var(--gradient);
+      box-shadow: 0 12px 32px rgba(139,92,246,.28);
+    }
+    .btn-primary:hover { box-shadow: 0 16px 40px rgba(139,92,246,.38); }
+    .btn-icon { width: 42px; height: 42px; padding: 0; border-radius: 12px; }
+    .menu-toggle { display: none; }
+
+    /* HERO */
+    .hero {
+      min-height: 100svh; display: flex; align-items: center;
+      padding-top: var(--nav-h); position: relative; z-index: 1;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center;
+      padding: 48px 0 72px;
+    }
+    .hero-copy h1 {
+      font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 1.02; margin: 0 0 20px; font-weight: 800;
+    }
+    .hero-lead { font-size: 1.1rem; color: var(--muted); max-width: 54ch; margin: 0 0 28px; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 36px; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      font-size: 12px; font-weight: 500; padding: 7px 12px; border-radius: 999px;
+      border: 1px solid var(--border); background: var(--surface); color: var(--muted);
+      transition: .25s var(--ease);
+    }
+    .tag:hover { color: var(--text); border-color: var(--border-strong); transform: translateY(-1px); }
+
+    .hero-visual { position: relative; display: grid; place-items: center; }
+    .avatar-ring {
+      position: relative; width: min(340px, 80vw); aspect-ratio: 1;
+    }
+    .avatar-ring::before {
+      content: ""; position: absolute; inset: -3px; border-radius: 50%;
+      background: var(--gradient); animation: spin 12s linear infinite;
+    }
+    .avatar-ring::after {
+      content: ""; position: absolute; inset: -18px; border-radius: 50%;
+      border: 1px dashed var(--border-strong); animation: spin 30s linear infinite reverse;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .avatar {
+      position: relative; width: 100%; height: 100%; border-radius: 50%; overflow: hidden;
+      border: 4px solid var(--bg); box-shadow: var(--shadow);
+      animation: float 5s ease-in-out infinite;
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    @keyframes float { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-12px); } }
+
+    .float-card {
+      position: absolute; padding: 12px 14px; border-radius: 14px;
+      background: color-mix(in srgb, var(--bg) 55%, transparent);
+      backdrop-filter: blur(16px); border: 1px solid var(--border);
+      box-shadow: var(--shadow); font-size: 13px; animation: float 4s ease-in-out infinite;
+    }
+    .float-card strong { display: block; font-family: var(--font-display); font-size: 1.1rem; }
+    .float-card span { color: var(--muted); font-size: 12px; }
+    .fc-1 { top: 8%; right: -8%; animation-delay: -.5s; }
+    .fc-2 { bottom: 12%; left: -10%; animation-delay: -2s; }
+
+    /* STATS */
+    .stats {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+      margin-top: -24px; position: relative; z-index: 2;
+    }
+    .stat {
+      padding: 24px; border-radius: var(--radius); border: 1px solid var(--border);
+      background: var(--surface); backdrop-filter: blur(12px);
+      transition: transform .3s var(--ease), border-color .3s;
+    }
+    .stat:hover { transform: translateY(-4px); border-color: var(--border-strong); }
+    .stat-num {
+      font-family: var(--font-display); font-size: 2rem; font-weight: 800; line-height: 1;
+      background: var(--gradient-text); -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .stat-label { margin-top: 6px; font-size: 13px; color: var(--muted); }
+
+    /* CARDS & BENTO */
+    .card {
+      border-radius: var(--radius); border: 1px solid var(--border);
+      background: var(--surface); backdrop-filter: blur(14px);
+      padding: 28px; transition: transform .35s var(--ease), border-color .35s, box-shadow .35s;
+    }
+    .card:hover { border-color: var(--border-strong); box-shadow: var(--shadow); }
+    .card p { color: var(--muted); margin: 0; }
+    .card p + p { margin-top: 12px; }
+
+    .bento { display: grid; gap: 18px; }
+    .bento-2 { grid-template-columns: 1.2fr .8fr; }
+    .bento-3 { grid-template-columns: repeat(3, 1fr); }
+
+    .info-item { padding: 16px; border-radius: var(--radius-sm); background: var(--surface); border: 1px solid var(--border); }
+    .info-item .label { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--dim); margin-bottom: 4px; }
+    .info-item .value { font-weight: 500; font-size: 14px; word-break: break-word; }
+    .info-item a:hover { color: var(--cyan); }
+
+    /* TIMELINE */
+    .timeline { display: grid; gap: 20px; }
+    .timeline-item {
+      position: relative; padding: 24px 24px 24px 28px;
+      border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface);
+      border-left: 3px solid transparent;
+      background-image: linear-gradient(var(--surface), var(--surface)), var(--gradient);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+    }
+    .timeline-item .meta { color: var(--muted); font-size: 13px; margin: 6px 0 14px; }
+    .timeline-item ul { color: var(--muted); }
+    .timeline-item li strong { color: var(--text); font-weight: 600; }
+
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .skill-card {
+      padding: 22px; border-radius: var(--radius); border: 1px solid var(--border);
+      background: var(--surface); transition: .3s var(--ease);
+    }
+    .skill-card:hover { transform: translateY(-3px); border-color: var(--border-strong); }
+    .skill-card h3 {
+      font-size: 12px; text-transform: uppercase; letter-spacing: .1em;
+      color: var(--dim); margin-bottom: 14px; font-family: var(--font-body); font-weight: 600;
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      font-size: 12px; font-weight: 500; padding: 7px 11px; border-radius: 999px;
+      border: 1px solid var(--border); background: color-mix(in srgb, var(--bg) 40%, transparent);
+      transition: .2s var(--ease);
+    }
+    .chip:hover { border-color: var(--violet); background: var(--violet-soft); }
+
+    /* PROJECTS */
+    .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px; }
+    .project-card {
+      display: flex; flex-direction: column; gap: 12px;
+      padding: 24px; border-radius: var(--radius); border: 1px solid var(--border);
+      background: var(--surface); min-height: 100%;
+      transition: transform .35s var(--ease), border-color .35s, box-shadow .35s;
+      position: relative; overflow: hidden;
+    }
+    .project-card::before {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(circle at top right, var(--violet-soft), transparent 55%);
+      opacity: 0; transition: opacity .35s;
+    }
+    .project-card:hover { transform: translateY(-6px); border-color: var(--border-strong); box-shadow: var(--shadow); }
+    .project-card:hover::before { opacity: 1; }
+    .project-card > * { position: relative; z-index: 1; }
+    .project-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .project-icon {
+      width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .pi-edu { background: var(--violet-soft); }
+    .pi-shop { background: var(--cyan-soft); }
+    .pi-food { background: var(--green-soft); }
+    .pi-oss { background: rgba(244,114,182,.14); }
+    .domain {
+      font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--cyan); margin-bottom: 4px;
+    }
+    .project-desc { font-size: 14px; color: var(--muted); flex: 1; margin: 0; }
+    .project-tech { font-size: 12px; color: var(--dim); line-height: 1.5; }
+    .project-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 4px; }
+    .link-pill {
+      font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 999px;
+      border: 1px solid var(--border); transition: .2s;
+    }
+    .link-pill:hover { background: var(--gradient); color: #07080f; border-color: transparent; }
+
+    /* MARQUEE */
+    .marquee-wrap {
+      overflow: hidden; border-block: 1px solid var(--border);
+      background: color-mix(in srgb, var(--bg-2) 80%, transparent);
+      padding: 18px 0; margin-bottom: 0;
+    }
+    .marquee { display: flex; width: max-content; animation: marquee 28s linear infinite; }
+    .marquee span {
+      padding: 0 20px; font-family: var(--font-display); font-weight: 700;
+      font-size: 14px; letter-spacing: .04em; color: var(--dim); white-space: nowrap;
+    }
+    .marquee span em { font-style: normal; color: var(--violet); }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* CONTACT */
+    .contact-card {
+      text-align: center; padding: 56px 32px; border-radius: calc(var(--radius) + 4px);
+      border: 1px solid var(--border); background:
+        radial-gradient(ellipse at top, var(--violet-soft), transparent 60%),
+        var(--surface);
+    }
+    .contact-card h2 { margin-bottom: 12px; }
+    .contact-card p { color: var(--muted); max-width: 48ch; margin: 0 auto 28px; }
+    .contact-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+
+    footer {
+      padding: 32px 0 48px; text-align: center; color: var(--dim); font-size: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .8s var(--ease), transform .8s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: .08s; }
+    .reveal-d2 { transition-delay: .16s; }
+    .reveal-d3 { transition-delay: .24s; }
+
+    /* MOBILE */
+    @media (max-width: 960px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+      .hero-lead { margin-inline: auto; }
+      .hero-cta, .hero-tags { justify-content: center; }
+      .hero-visual { order: -1; }
+      .float-card { display: none; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .bento-2, .bento-3 { grid-template-columns: 1fr; }
+      .nav-links {
+        display: none; position: fixed; top: var(--nav-h); left: 16px; right: 16px;
+        flex-direction: column; padding: 12px; border-radius: var(--radius);
+        background: color-mix(in srgb, var(--bg) 92%, transparent);
+        backdrop-filter: blur(20px); border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+      .nav-links.open { display: flex; }
+      .menu-toggle { display: inline-flex; }
+      .logo span:last-child { display: none; }
+    }
+
+    @media (max-width: 520px) {
+      .section { padding: 72px 0; }
+      .stats { grid-template-columns: 1fr; }
+      .project-grid { grid-template-columns: 1fr; }
+      .nav-actions .btn:not(.btn-primary):not(.btn-icon) { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="aurora" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="nav-wrap" id="nav">
+    <div class="container nav">
+      <a class="logo" href="#">
+        <span class="logo-mark">G</span>
+        <span>George Amany</span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Main">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-primary" href="assets/George_Amany_CV_2025.docx" download>Download CV</a>
+        <button class="btn btn-icon" id="themeBtn" aria-label="Toggle theme">◐</button>
+        <button class="btn btn-icon menu-toggle" id="menuBtn" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow">Senior Flutter Developer · Cairo, Egypt</div>
+          <h1>I build <span class="gradient-text">production apps</span> that scale.</h1>
+          <p class="hero-lead">Mobile &amp; desktop Flutter engineer shipping real products — Clean Architecture, BLoC/Cubit, REST APIs, Firebase, and payments — from education platforms to e-commerce and influencer marketing.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#projects">View my work</a>
+            <a class="btn" href="https://github.com/GeorgeAmany" target="_blank" rel="noreferrer">GitHub →</a>
+            <a class="btn" href="https://www.linkedin.com/in/george-amany-53b148219/" target="_blank" rel="noreferrer">LinkedIn →</a>
+          </div>
+          <div class="hero-tags">
+            <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Clean Architecture</span>
+            <span class="tag">BLoC / Cubit</span><span class="tag">Dio / Retrofit</span><span class="tag">Firebase</span>
+            <span class="tag">Stripe</span><span class="tag">Desktop Flutter</span><span class="tag">GitHub Actions</span>
+            <span class="tag">pub.dev</span>
+          </div>
+        </div>
+        <div class="hero-visual reveal reveal-d2">
+          <div class="avatar-ring">
+            <div class="avatar"><img src="assets/george.jpg" alt="George Amany" width="340" height="340"></div>
+          </div>
+          <div class="float-card fc-1"><strong>10+</strong><span>Production apps</span></div>
+          <div class="float-card fc-2"><strong>2</strong><span>pub.dev packages</span></div>
+        </div>
+      </div>
+      <div class="container stats reveal reveal-d3">
+        <div class="stat"><div class="stat-num" data-count="630">630+</div><div class="stat-label">Commits on flagship projects</div></div>
+        <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Apps shipped to production</div></div>
+        <div class="stat"><div class="stat-num">2</div><div class="stat-label">Open-source pub.dev packages</div></div>
+        <div class="stat"><div class="stat-num">2+</div><div class="stat-label">Years at Neural Design Studios</div></div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-wrap" aria-hidden="true">
+      <div class="marquee">
+        <span><em>Flutter</em> · Dart · Clean Architecture · BLoC · Cubit · Dio · Retrofit · Firebase · Hive · Floor · SQLite · GoRouter · Stripe · Pusher · GitHub Actions · Flutter Desktop · </span>
+        <span><em>Flutter</em> · Dart · Clean Architecture · BLoC · Cubit · Dio · Retrofit · Firebase · Hive · Floor · SQLite · GoRouter · Stripe · Pusher · GitHub Actions · Flutter Desktop · </span>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">About me</div>
+          <h2>Crafting maintainable Flutter products</h2>
+        </div>
+        <div class="bento bento-2">
+          <div class="card reveal">
+            <p>Senior Flutter Developer at <strong>Neural Design Studios</strong> with a Bachelor's degree in Computer Science. I build and ship production mobile and desktop applications across education, e-commerce, food services, and influencer marketing.</p>
+            <p>I work with feature-first Clean Architecture, BLoC/Cubit state management, typed REST clients (Dio/Retrofit), Firebase, and local storage (Hive, Floor, SQLite).</p>
+            <p>Published apps on Google Play and the App Store. Author of open-source packages on pub.dev. Passionate about maintainable code, scalable architecture, and impactful mobile solutions.</p>
+          </div>
+          <div class="bento" style="gap:12px">
+            <div class="info-item reveal reveal-d1"><div class="label">Location</div><div class="value">Cairo, Egypt</div></div>
+            <div class="info-item reveal reveal-d1"><div class="label">Role</div><div class="value">Senior Flutter Developer</div></div>
+            <div class="info-item reveal reveal-d2"><div class="label">Email</div><div class="value"><a href="mailto:georgeamany5@gmail.com">georgeamany5@gmail.com</a></div></div>
+            <div class="info-item reveal reveal-d2"><div class="label">Phone</div><div class="value"><a href="tel:+201270037845">+20 127 003 7845</a></div></div>
+            <div class="info-item reveal reveal-d3"><div class="label">LinkedIn</div><div class="value"><a href="https://www.linkedin.com/in/george-amany-53b148219/" target="_blank" rel="noreferrer">linkedin.com/in/george-amany-53b148219</a></div></div>
+            <div class="info-item reveal reveal-d3"><div class="label">GitHub</div><div class="value"><a href="https://github.com/GeorgeAmany" target="_blank" rel="noreferrer">github.com/GeorgeAmany</a></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Career</div>
+          <h2>Experience</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <h3>Flutter Developer — Neural Design Studios</h3>
+            <div class="meta">Full-time · Jun 2024 – Present · Cairo, Egypt</div>
+            <ul>
+              <li>Shipped <strong>10+ production Flutter apps</strong> using Clean Architecture with feature-first data/domain/presentation layers.</li>
+              <li>Primary developer on <strong>Fuse</strong> influencer platform (185+ commits): dual-app for agencies &amp; influencers with Cubit, Injectable DI, Firebase, and Storyly.</li>
+              <li>Lead developer on <strong>Taleem</strong> Islamic education apps (300+ combined commits): REST API, Quran SQLite databases, and GitHub Actions CI for automated APK builds.</li>
+              <li>Enhanced <strong>Noor Institute</strong> to v3.7.0: Stripe payments, Pusher real-time chat, Floor local DB, Retrofit API layer.</li>
+              <li>Built cross-platform desktop apps: <strong>Zahran POS</strong> (offline invoice sync, PDF printing) and <strong>Proposal Desktop</strong> (PDF proposal builder).</li>
+              <li>Delivered Schupply, Zahran, Binge, and Al Wefaq Foods with REST APIs, Firebase, social auth, maps, and payment gateways.</li>
+              <li>Published open-source packages on pub.dev: <a href="https://pub.dev/packages/animated_contact_us" target="_blank" rel="noreferrer">animated_contact_us</a> and <a href="https://pub.dev/packages/liquid_wave_indicator" target="_blank" rel="noreferrer">liquid_wave_indicator</a>.</li>
+            </ul>
+          </article>
+          <article class="timeline-item reveal">
+            <h3>Flutter Developer — Neural Design Studios</h3>
+            <div class="meta">Part-time · Feb 2024 – Jun 2024 · Cairo, Egypt</div>
+            <ul>
+              <li>Collaborated with cross-functional teams to deliver responsive, production-ready Flutter applications.</li>
+              <li>Implemented scalable state management patterns and UI performance optimizations.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Expertise</div>
+          <h2>Skills &amp; stack</h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card reveal">
+            <h3>Core</h3>
+            <div class="chips">
+              <span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">Clean Architecture</span>
+              <span class="chip">BLoC / Cubit</span><span class="chip">GetIt / Injectable</span><span class="chip">GoRouter</span>
+            </div>
+          </div>
+          <div class="skill-card reveal reveal-d1">
+            <h3>Networking &amp; APIs</h3>
+            <div class="chips">
+              <span class="chip">Dio</span><span class="chip">Retrofit</span><span class="chip">REST APIs</span>
+              <span class="chip">Pusher</span><span class="chip">Postman</span>
+            </div>
+          </div>
+          <div class="skill-card reveal reveal-d2">
+            <h3>Backend &amp; Storage</h3>
+            <div class="chips">
+              <span class="chip">Firebase Auth</span><span class="chip">Firestore</span><span class="chip">FCM</span>
+              <span class="chip">Crashlytics</span><span class="chip">Hive</span><span class="chip">Floor</span><span class="chip">SQLite</span>
+            </div>
+          </div>
+          <div class="skill-card reveal reveal-d3">
+            <h3>Payments &amp; Integrations</h3>
+            <div class="chips">
+              <span class="chip">Stripe</span><span class="chip">Amazon Payment Services</span>
+              <span class="chip">Google Sign-In</span><span class="chip">Apple Sign-In</span><span class="chip">Google Maps</span>
+            </div>
+          </div>
+          <div class="skill-card reveal">
+            <h3>Desktop &amp; DevOps</h3>
+            <div class="chips">
+              <span class="chip">Flutter Desktop</span><span class="chip">Window Manager</span><span class="chip">PDF / Printing</span>
+              <span class="chip">Git</span><span class="chip">GitHub Actions</span><span class="chip">CI/CD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Portfolio</div>
+          <h2>Selected projects</h2>
+        </div>
+        <div class="project-grid">
+
+          <article class="project-card reveal">
+            <div class="project-top">
+              <div><div class="domain">Education</div><h3>Noor Institute</h3></div>
+              <div class="project-icon pi-edu">🎓</div>
+            </div>
+            <p class="project-desc">Production app (v3.7.0) for courses, homework, schedules, invoices, and real-time chat. Stripe payments and Pusher messaging.</p>
+            <div class="project-tech">Flutter · BLoC · Retrofit · Floor · Stripe · Pusher · Firebase · Freezed</div>
+            <div class="project-links">
+              <a class="link-pill" href="https://play.google.com/store/apps/details?id=com.softera.noor_academy&hl=en" target="_blank" rel="noreferrer">Google Play</a>
+              <a class="link-pill" href="https://apps.apple.com/eg/app/noor-institute/id6463731504" target="_blank" rel="noreferrer">App Store</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal reveal-d1">
+            <div class="project-top">
+              <div><div class="domain">Influencer Marketing</div><h3>Fuse</h3></div>
+              <div class="project-icon pi-edu">⚡</div>
+            </div>
+            <p class="project-desc">Dual-app platform for agencies and influencers: profiles, content posting, service requests, and Storyly integration.</p>
+            <div class="project-tech">Flutter · Cubit · Injectable · Freezed · Dio · Firebase · Storyly · GoRouter</div>
+          </article>
+
+          <article class="project-card reveal reveal-d2">
+            <div class="project-top">
+              <div><div class="domain">Islamic Education</div><h3>Taleem</h3></div>
+              <div class="project-icon pi-edu">📖</div>
+            </div>
+            <p class="project-desc">Student &amp; employee apps with Quran mushaf, attendance, memorization, evaluations. GitHub Actions CI for APK builds.</p>
+            <div class="project-tech">Flutter · BLoC · Dio · Hive · SQLite · Firebase · GitHub Actions</div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-top">
+              <div><div class="domain">E-Commerce</div><h3>Schupply</h3></div>
+              <div class="project-icon pi-shop">🛍️</div>
+            </div>
+            <p class="project-desc">School supplies ordering with REST API, social auth, and deep linking.</p>
+            <div class="project-tech">Flutter · BLoC · Dio · Hive · GoRouter · Firebase</div>
+            <div class="project-links">
+              <a class="link-pill" href="https://play.google.com/store/apps/details?id=com.schupply.app&hl=en" target="_blank" rel="noreferrer">Google Play</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal reveal-d1">
+            <div class="project-top">
+              <div><div class="domain">E-Commerce &amp; POS</div><h3>Zahran</h3></div>
+              <div class="project-icon pi-shop">🏪</div>
+            </div>
+            <p class="project-desc">Mobile shopping + desktop POS with offline invoice sync, PDF export, and secure storage.</p>
+            <div class="project-tech">Flutter · BLoC · Dio · Hive · Window Manager · PDF · Printing</div>
+          </article>
+
+          <article class="project-card reveal reveal-d2">
+            <div class="project-top">
+              <div><div class="domain">Food Subscription</div><h3>Binge</h3></div>
+              <div class="project-icon pi-food">🍽️</div>
+            </div>
+            <p class="project-desc">Meal ordering, subscriptions, wallet, and loyalty program with analytics and payments.</p>
+            <div class="project-tech">Flutter · BLoC · Dio · Firebase Crashlytics · Amazon Payment Services · Clarity</div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-top">
+              <div><div class="domain">Food Brand</div><h3>Al Wefaq Foods</h3></div>
+              <div class="project-icon pi-food">🥗</div>
+            </div>
+            <p class="project-desc">WebView app with Firebase and OneSignal push notifications and in-app messaging.</p>
+            <div class="project-tech">Flutter · InAppWebView · MobX · Firebase · OneSignal</div>
+            <div class="project-links">
+              <a class="link-pill" href="https://play.google.com/store/apps/details?id=com.alwefaqfoods.app" target="_blank" rel="noreferrer">Google Play</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal reveal-d1">
+            <div class="project-top">
+              <div><div class="domain">Desktop</div><h3>Proposal Desktop</h3></div>
+              <div class="project-icon pi-shop">📄</div>
+            </div>
+            <p class="project-desc">PDF proposal generator with editor, service packages, and payment methods.</p>
+            <div class="project-tech">Flutter Desktop · BLoC · PDF · Printing · Window Manager</div>
+          </article>
+
+          <article class="project-card reveal reveal-d2">
+            <div class="project-top">
+              <div><div class="domain">On-Demand Services</div><h3>Horse Time</h3></div>
+              <div class="project-icon pi-shop">🐴</div>
+            </div>
+            <p class="project-desc">Booking app with chat, multi-gateway payments, maps, and Firebase backend.</p>
+            <div class="project-tech">Flutter · MobX · Firebase · Google Maps · Stripe / Razorpay / PayPal</div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-top">
+              <div><div class="domain">Industrial</div><h3>Al Rassi</h3></div>
+              <div class="project-icon pi-shop">🏭</div>
+            </div>
+            <p class="project-desc">Published production mobile application.</p>
+            <div class="project-tech">Flutter</div>
+            <div class="project-links">
+              <a class="link-pill" href="https://play.google.com/store/apps/details?id=com.appsbunches.alrassiapp&hl=en" target="_blank" rel="noreferrer">Google Play</a>
+              <a class="link-pill" href="https://apps.apple.com/eg/app/%D8%A7%D9%84%D8%B1%D8%B3%D9%8A-%D9%84%D9%84%D8%A7%D8%B4%D8%AC%D8%A7%D8%B1-%D8%A7%D9%84%D8%B5%D9%86%D8%A7%D8%B9%D9%8A%D8%A9/id6736564188" target="_blank" rel="noreferrer">App Store</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal reveal-d1">
+            <div class="project-top">
+              <div><div class="domain">Open Source · pub.dev</div><h3>animated_contact_us</h3></div>
+              <div class="project-icon pi-oss">📦</div>
+            </div>
+            <p class="project-desc">Animated contact/social link UI widget for Flutter apps. v0.0.8</p>
+            <div class="project-tech">Flutter · Font Awesome · URL Launcher</div>
+            <div class="project-links">
+              <a class="link-pill" href="https://pub.dev/packages/animated_contact_us" target="_blank" rel="noreferrer">pub.dev</a>
+              <a class="link-pill" href="https://github.com/GeorgeAmany/animated_contact_us" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal reveal-d2">
+            <div class="project-top">
+              <div><div class="domain">Open Source · pub.dev</div><h3>liquid_wave_indicator</h3></div>
+              <div class="project-icon pi-oss">🌊</div>
+            </div>
+            <p class="project-desc">Animated liquid wave progress indicator widget. v0.2.2</p>
+            <div class="project-tech">Flutter · Pure Dart</div>
+            <div class="project-links">
+              <a class="link-pill" href="https://pub.dev/packages/liquid_wave_indicator" target="_blank" rel="noreferrer">pub.dev</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section" id="education">
+      <div class="container bento bento-3">
+        <div class="card reveal">
+          <div class="eyebrow">Education</div>
+          <h3 style="margin:8px 0 10px">BSc Computer Science</h3>
+          <p>Modern Academy Maadi, Cairo — 2022</p>
+        </div>
+        <div class="card reveal reveal-d1">
+          <div class="eyebrow">Courses</div>
+          <ul style="color:var(--muted); margin-top:12px">
+            <li>Full Flutter Diploma (100 hours) — Array</li>
+            <li>Flutter &amp; Dart — Udemy</li>
+            <li>Cyber Security Diploma (150 hours) — Instant</li>
+          </ul>
+        </div>
+        <div class="card reveal reveal-d2">
+          <div class="eyebrow">Community</div>
+          <ul style="color:var(--muted); margin-top:12px">
+            <li>Flutter workshop — Alalmiya Alhura, El Mansoura</li>
+            <li>Flutter Forward Extended Cloud Egypt '23 — GDG</li>
+            <li>Online Flutter workshop — Machinfy</li>
+            <li>Penetration Tester Training — Instant</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-card reveal">
+          <div class="eyebrow" style="justify-content:center">Let's work together</div>
+          <h2>Ready to build something great?</h2>
+          <p>Open to full-time roles and freelance projects. Let's talk about your next Flutter product.</p>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="mailto:georgeamany5@gmail.com">Email me</a>
+            <a class="btn" href="tel:+201270037845">+20 127 003 7845</a>
+            <a class="btn" href="https://www.linkedin.com/in/george-amany-53b148219/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="btn" href="https://github.com/GeorgeAmany" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn" href="assets/George_Amany_CV_2025.docx" download>CV (.docx)</a>
+            <a class="btn" href="downloads/01-ats-cv.txt" download>ATS CV</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 George Amany · Senior Flutter Developer · Built with precision</div>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const THEME_KEY = 'theme';
+
+    function setTheme(mode) {
+      root.classList.toggle('light', mode === 'light');
+      localStorage.setItem(THEME_KEY, mode);
+    }
+
+    document.getElementById('themeBtn').addEventListener('click', () => {
+      setTheme(root.classList.contains('light') ? 'dark' : 'light');
+    });
+
+    if (localStorage.getItem(THEME_KEY) === 'light') setTheme('light');
+
+    const nav = document.getElementById('nav');
+    const navLinks = document.getElementById('navLinks');
+    const menuBtn = document.getElementById('menuBtn');
+    const sections = [...document.querySelectorAll('section[id]')];
+    const links = [...navLinks.querySelectorAll('a')];
+
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 24);
+      const y = window.scrollY + 100;
+      let current = '';
+      sections.forEach(s => { if (s.offsetTop <= y) current = s.id; });
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+    }, { passive: true });
+
+    menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+    links.forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+LINKEDIN HEADLINE
+Senior Flutter Developer | Clean Architecture | Mobile & Desktop | Firebase & REST APIs | Published Apps on Play Store & App Store | Open Source (pub.dev)
+
+---
+
+LINKEDIN ABOUT
+
+I build production Flutter applications that ship — across mobile and desktop, from education platforms to e-commerce, food services, and influencer marketing.
+
+As a Flutter Developer at Neural Design Studios in Cairo, I work on real products used by thousands of users. My day-to-day stack includes Clean Architecture, BLoC/Cubit state management, Dio and Retrofit for REST APIs, Firebase for auth and push notifications, and Hive/Floor for local storage. I have shipped apps to Google Play and the App Store, built cross-platform desktop tools for macOS and Windows, and published open-source packages on pub.dev.
+
+Selected work I am proud of:
+
+• Noor Institute — Education management app (v3.7.0) with Stripe payments, Pusher real-time chat, and offline caching
+• Fuse — Influencer marketing platform with dual apps for agencies and influencers
+• Taleem — Islamic education ecosystem (student + employee apps) with Quran databases and GitHub Actions CI
+• Zahran — E-commerce mobile app and desktop POS with offline invoice sync and PDF printing
+• Schupply, Binge, Al Wefaq Foods — Production apps across e-commerce and food domains
+• animated_contact_us & liquid_wave_indicator — Open-source Flutter packages on pub.dev
+
+I care about maintainable code: feature-first module boundaries, dependency injection, typed API clients, and consistent patterns that teams can scale. I hold a Bachelor's degree in Computer Science from Modern Academy Maadi and stay active in the Flutter community through workshops and GDG events.
+
+Open to full-time roles and meaningful freelance projects. Let's connect.
+
+---
+
+TOP SKILLS (LinkedIn Skills Section — ordered by evidence strength)
+
+1. Flutter
+2. Dart
+3. Mobile Application Development
+4. Clean Architecture
+5. BLoC (Business Logic Component)
+6. REST APIs
+7. Firebase
+8. Dio
+9. State Management
+10. Cross-platform Development
+11. Git
+12. CI/CD
+13. Hive
+14. SQLite
+15. GoRouter
+16. Dependency Injection
+17. Stripe
+18. Google Play
+19. App Store
+20. Desktop Application Development
+21. Freezed
+22. Retrofit
+23. Firebase Cloud Messaging
+24. Easy Localization
+25. Open Source Software
+
+---
+
+ACHIEVEMENT-BASED EXPERIENCE (LinkedIn Experience Section)
+
+Flutter Developer
+Neural Design Studios · Full-time
+Jun 2024 – Present · Cairo, Egypt
+
+• Shipped 10+ production Flutter applications across education, e-commerce, food, and influencer marketing domains using Clean Architecture and BLoC/Cubit state management
+• Primary developer on Fuse influencer marketing platform (185+ commits) — dual-app architecture for agencies and influencers with Firebase, Storyly, and Injectable DI
+• Lead developer on Taleem Islamic education apps (300+ combined commits) — REST API integration, Quran SQLite databases, attendance/evaluation modules, and GitHub Actions CI for automated APK builds
+• Enhanced Noor Institute production app to v3.7.0 with Stripe payment flow, Pusher real-time chat, Floor local DB, and Retrofit typed API layer
+• Built cross-platform desktop apps: Zahran POS (offline invoice sync, PDF printing) and Proposal Desktop (business PDF generator)
+• Published open-source Flutter packages on pub.dev: animated_contact_us and liquid_wave_indicator
+• Integrated REST APIs, Firebase, Google/Apple Sign-In, Google Maps, and payment gateways across Schupply, Zahran, Binge, and Al Wefaq Foods
+
+Skills: Flutter · Dart · Clean Architecture · Firebase · REST APIs · BLoC · Git · CI/CD
+
+---
+
+Flutter Developer
+Neural Design Studios · Part-time
+Feb 2024 – Jun 2024 · Cairo, Egypt
+
+• Collaborated with development team to deliver responsive, production-ready Flutter applications
+• Implemented scalable state management patterns and UI performance optimizations
+
+Skills: Flutter · Dart · Mobile Application Development
