@@ -45,7 +45,8 @@ doc.add_paragraph(
     "Architecture apps using BLoC/Cubit, Dio/Retrofit REST integrations, Firebase, Hive/Floor "
     "local storage, and cross-platform desktop tooling (macOS/Windows). Published multiple apps "
     "to Google Play and the App Store, authored open-source packages on pub.dev, and set up "
-    "GitHub Actions CI for automated APK builds."
+    "GitHub Actions CI for automated APK builds. Grew quickly under senior mentorship and now "
+    "mentors interns and junior developers on Flutter, Clean Architecture, and code-quality standards."
 )
 
 # --- Core Skills ---
@@ -56,6 +57,7 @@ skills = [
     "Hive, Floor & SQLite Local Storage", "GoRouter Navigation", "Freezed & Dartz",
     "Stripe & Multi-Gateway Payments", "Pusher Real-Time", "Flutter Desktop (macOS/Windows)",
     "Git & GitHub Actions CI/CD", "Easy Localization", "Postman", "Clean Code & Code Review",
+    "Mentoring Interns & Junior Developers",
 ]
 p = doc.add_paragraph(", ".join(skills))
 
@@ -72,6 +74,7 @@ bullets = [
     "Delivered cross-platform desktop apps: Zahran POS (offline invoice sync, PDF printing, Hive storage) and Proposal Desktop (PDF document builder with flutter_bloc and window_manager).",
     "Integrated REST APIs, Firebase services, Google/Apple Sign-In, Google Maps, and payment gateways (Stripe, Amazon Payment Services) across Schupply, Zahran, Binge, and Al Wefaq Foods apps.",
     "Published and maintained open-source Flutter packages on pub.dev: animated_contact_us (v0.0.8) and liquid_wave_indicator (v0.2.2).",
+    "Mentor interns and junior developers — onboarding them onto Flutter, Clean Architecture, and code-review and code-quality practices, and supporting them in shipping their first production features.",
     "Applied maintainability practices: dependency injection, typed API clients, localization (easy_localization), structured error handling, and consistent feature module boundaries.",
 ]
 for b in bullets:
