@@ -402,6 +402,46 @@
     .tl-ul li a{color:var(--p-light)}
     .tl-ul li a:hover{text-decoration:underline}
 
+    /* ── JOURNEY ── */
+    .journey-track{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;position:relative}
+    .journey-track::before{
+      content:"";position:absolute;top:23px;left:14%;right:14%;height:2px;z-index:0;
+      background:linear-gradient(90deg,transparent,var(--p),var(--purple),transparent);
+      opacity:.35;
+    }
+    .jrn-step{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center}
+    .jrn-num{
+      width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+      font-family:var(--display);font-weight:800;font-size:1rem;color:#fff;
+      background:var(--grad);box-shadow:0 8px 24px rgba(99,102,241,.42);margin-bottom:20px;position:relative;
+      transition:transform .4s var(--bounce);
+    }
+    .jrn-step:hover .jrn-num{transform:scale(1.12) rotate(-6deg)}
+    .jrn-num::after{
+      content:"";position:absolute;inset:-5px;border-radius:50%;
+      animation:node-pulse 2.6s ease-in-out infinite;
+    }
+    .jrn-card{
+      position:relative;overflow:hidden;width:100%;flex:1;
+      padding:26px 22px;border-radius:var(--R-lg);border:1px solid var(--border);
+      background:var(--surface);backdrop-filter:blur(14px);
+      transition:transform .4s var(--ease),border-color .4s,box-shadow .4s;
+    }
+    .jrn-card::after{
+      content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+      background:radial-gradient(360px circle at 50% 0%,var(--p-soft),transparent 60%);
+      opacity:0;transition:opacity .4s;
+    }
+    .jrn-card:hover{transform:translateY(-7px);border-color:var(--border2);box-shadow:var(--shadow)}
+    .jrn-card:hover::after{opacity:1}
+    .jrn-icon{font-size:30px;margin-bottom:12px}
+    .jrn-title{font-size:1.05rem;font-weight:700;margin-bottom:10px}
+    .jrn-card p{font-size:13.5px;color:var(--muted);line-height:1.72;position:relative;z-index:1}
+    @media(max-width:760px){
+      .journey-track{grid-template-columns:1fr;gap:14px}
+      .journey-track::before{display:none}
+    }
+
     /* ── SKILLS ── */
     .skills-wrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
     .skill-card{
@@ -596,6 +636,7 @@
     <nav class="nav-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
+      <a href="#journey">Journey</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
@@ -749,6 +790,43 @@
               <li>Delivered responsive Flutter applications with cross-functional teams.</li>
               <li>Implemented scalable state management patterns and UI performance optimizations.</li>
             </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section id="journey">
+    <div class="container">
+      <div class="reveal">
+        <div class="eyebrow">The path</div>
+        <h2 class="sec-title">My <span class="grad-text">journey</span></h2>
+        <p class="sec-sub">From first commit to mentoring the next generation of Flutter developers.</p>
+      </div>
+      <div class="journey-track">
+        <div class="jrn-step reveal">
+          <div class="jrn-num">01</div>
+          <div class="jrn-card">
+            <div class="jrn-icon">🌱</div>
+            <h3 class="jrn-title">Started &amp; invested in myself</h3>
+            <p>Joined Neural Design Studios as a part-time developer in early 2024 and took ownership of growing fast — Clean Architecture, BLoC/Cubit, and production workflows — through deliberate practice and self-study.</p>
+          </div>
+        </div>
+        <div class="jrn-step reveal d1">
+          <div class="jrn-num">02</div>
+          <div class="jrn-card">
+            <div class="jrn-icon">🚀</div>
+            <h3 class="jrn-title">Grew under strong mentorship</h3>
+            <p>Guided by senior engineers, I moved to full-time and started owning features end-to-end — shipping 10+ production apps, two open-source packages, and CI/CD pipelines with real independence and confidence.</p>
+          </div>
+        </div>
+        <div class="jrn-step reveal d2">
+          <div class="jrn-num">03</div>
+          <div class="jrn-card">
+            <div class="jrn-icon">🤝</div>
+            <h3 class="jrn-title">Now mentoring others</h3>
+            <p>Today I mentor interns and junior developers at the company — sharing Flutter best practices, Clean Architecture, and code-quality standards, and helping them ship their first real features.</p>
           </div>
         </div>
       </div>
