@@ -665,6 +665,39 @@
     .reveal-r{transform:translateX(44px)}
     .reveal-l.in,.reveal-r.in{opacity:1;transform:none;filter:none}
 
+    /* ── PRELOADER ── */
+    #loader{
+      position:fixed;inset:0;z-index:1000;background:var(--bg);
+      display:grid;place-items:center;
+      transition:opacity .7s var(--ease),visibility .7s var(--ease);
+    }
+    #loader.done{opacity:0;visibility:hidden}
+    .loader-inner{display:flex;flex-direction:column;align-items:center;gap:20px}
+    .loader-g{
+      width:66px;height:66px;border-radius:19px;background:var(--grad);
+      display:grid;place-items:center;font-family:var(--display);font-weight:800;
+      font-size:31px;color:#fff;box-shadow:0 16px 48px rgba(99,102,241,.55);
+      animation:loader-pop .8s var(--bounce) both;
+    }
+    @keyframes loader-pop{0%{transform:scale(.2) rotate(-35deg);opacity:0}100%{transform:none;opacity:1}}
+    .loader-bar{width:130px;height:3px;border-radius:3px;background:var(--surface2);overflow:hidden}
+    .loader-bar>span{display:block;height:100%;width:0;background:var(--grad);animation:loader-fill 1.05s var(--ease) .15s forwards}
+    @keyframes loader-fill{to{width:100%}}
+
+    /* ── SCRAMBLE ── */
+    #tw .scr{color:var(--p-light);opacity:.85}
+
+    /* ── WORD RISE (section titles) ── */
+    .word{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.06em}
+    .word-in{display:inline-block;transform:translateY(115%);transition:transform .75s var(--ease)}
+    .reveal.in .word-in,.reveal-l.in .word-in,.reveal-r.in .word-in{transform:none}
+
+    /* ── CLICK BURST ── */
+    .spark{
+      position:fixed;z-index:498;pointer-events:none;width:8px;height:8px;border-radius:50%;
+      translate:-50% -50%;will-change:transform,opacity;
+    }
+
     /* ── RESPONSIVE ── */
     @media(max-width:960px){
       .hero-grid{grid-template-columns:1fr;gap:32px}
@@ -699,6 +732,13 @@
   </style>
 </head>
 <body>
+
+<div id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <div class="loader-g">G</div>
+    <div class="loader-bar"><span></span></div>
+  </div>
+</div>
 
 <div id="prog"></div>
 <div id="spot" aria-hidden="true"></div>
@@ -1234,7 +1274,7 @@
   document.getElementById('menuBtn').addEventListener('click', () => navLinks.classList.toggle('open'));
   links.forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-  /* ── TYPEWRITER ── */
+  /* ── TEXT SCRAMBLE / DECODE ── */
   const roles = [
     'Mid-Senior Flutter Developer',
     'Clean Architecture Advocate',
@@ -1242,20 +1282,44 @@
     'Open Source Contributor',
   ];
   const twEl = document.getElementById('tw');
-  let ri = 0, ci = 0, del = false;
-  function type() {
-    const r = roles[ri];
-    if (!del) {
-      twEl.textContent = r.slice(0, ++ci);
-      if (ci === r.length) { del = true; setTimeout(type, 2200); return; }
-      setTimeout(type, 58);
-    } else {
-      twEl.textContent = r.slice(0, --ci);
-      if (ci === 0) { del = false; ri = (ri + 1) % roles.length; setTimeout(type, 350); return; }
-      setTimeout(type, 32);
-    }
+  const SCR = '!<>-_\\/[]{}—=+*^?#________';
+  function scrambleTo(text) {
+    return new Promise(resolve => {
+      const old = twEl.dataset.txt || '';
+      const len = Math.max(old.length, text.length);
+      const q = [];
+      for (let i = 0; i < len; i++) {
+        q.push({
+          from: old[i] || '', to: text[i] || '',
+          start: Math.floor(Math.random() * 18),
+          end: Math.floor(Math.random() * 18) + 14, char: '',
+        });
+      }
+      let frame = 0;
+      (function run() {
+        let out = '', done = 0;
+        for (const it of q) {
+          if (frame >= it.end) { done++; out += it.to; }
+          else if (frame >= it.start) {
+            if (!it.char || Math.random() < 0.28) it.char = SCR[Math.floor(Math.random() * SCR.length)];
+            out += `<span class="scr">${it.char}</span>`;
+          } else out += it.from;
+        }
+        twEl.innerHTML = out;
+        if (done === q.length) { twEl.dataset.txt = text; resolve(); }
+        else { frame++; requestAnimationFrame(run); }
+      })();
+    });
   }
-  setTimeout(type, 700);
+  (async function cycle() {
+    let i = 0;
+    await new Promise(r => setTimeout(r, 800));
+    while (true) {
+      await scrambleTo(roles[i]);
+      await new Promise(r => setTimeout(r, 2100));
+      i = (i + 1) % roles.length;
+    }
+  })();
 
   /* ── ANIMATED COUNTERS ── */
   function animCount(el, to) {
@@ -1455,6 +1519,61 @@
       if (hv) hv.style.translate = `0 ${y * 0.14}px`;
       if (tags) tags.style.translate = `0 ${y * 0.05}px`;
     }, { passive: true });
+  }
+
+  /* ── SPLIT SECTION TITLES INTO RISING WORDS ── */
+  document.querySelectorAll('.sec-title').forEach(title => {
+    const nodes = [...title.childNodes];
+    title.innerHTML = '';
+    let idx = 0;
+    nodes.forEach(node => {
+      const isEl = node.nodeType === 1;
+      const text = node.textContent;
+      const cls = isEl ? node.className : '';
+      text.split(/(\s+)/).forEach(part => {
+        if (part === '') return;
+        if (!part.trim()) { title.appendChild(document.createTextNode(part)); return; }
+        const word = document.createElement('span');
+        word.className = 'word';
+        const inner = document.createElement('span');
+        inner.className = 'word-in' + (cls ? ' ' + cls : '');
+        inner.textContent = part;
+        inner.style.transitionDelay = (idx++ * 0.06) + 's';
+        word.appendChild(inner);
+        title.appendChild(word);
+      });
+    });
+  });
+
+  /* ── PRELOADER ── */
+  const loader = document.getElementById('loader');
+  function hideLoader() { loader && loader.classList.add('done'); }
+  let loaded = false;
+  addEventListener('load', () => { loaded = true; });
+  setTimeout(() => { (loaded ? hideLoader() : addEventListener('load', hideLoader)); }, 1100);
+  setTimeout(hideLoader, 3500); // hard fallback
+
+  /* ── CLICK PARTICLE BURST ── */
+  if (fine) {
+    const COLORS = ['#6366f1', '#a855f7', '#06b6d4', '#10b981', '#f59e0b'];
+    addEventListener('pointerdown', e => {
+      if (e.target.closest('input,textarea')) return;
+      const n = 12;
+      for (let i = 0; i < n; i++) {
+        const s = document.createElement('div');
+        s.className = 'spark';
+        s.style.left = e.clientX + 'px';
+        s.style.top = e.clientY + 'px';
+        s.style.background = COLORS[i % COLORS.length];
+        document.body.appendChild(s);
+        const ang = (Math.PI * 2 * i) / n + Math.random() * .5;
+        const dist = 40 + Math.random() * 55;
+        s.animate([
+          { transform: 'translate(-50%,-50%) scale(1)', opacity: 1 },
+          { transform: `translate(calc(-50% + ${Math.cos(ang) * dist}px),calc(-50% + ${Math.sin(ang) * dist}px)) scale(0)`, opacity: 0 },
+        ], { duration: 600 + Math.random() * 250, easing: 'cubic-bezier(.22,1,.36,1)' }).onfinish = () => s.remove();
+      }
+    });
   }
 </script>
 </body>
