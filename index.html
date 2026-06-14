@@ -745,48 +745,6 @@
     }
     @keyframes ink{to{transform:scale(2.5);opacity:0}}
 
-    /* ── PHONE MOCKUP ── */
-    .phone{
-      position:absolute;left:-42px;bottom:5%;width:98px;height:200px;z-index:4;
-      border-radius:20px;padding:6px;
-      background:linear-gradient(160deg,#1b1b30,#0c0c16);
-      border:2px solid rgba(255,255,255,.1);
-      box-shadow:0 22px 50px rgba(0,0,0,.55);
-      animation:float-y 5.5s ease-in-out infinite;animation-delay:-1.8s;
-    }
-    .phone::before{
-      content:"";position:absolute;top:8px;left:50%;translate:-50% 0;
-      width:30px;height:5px;border-radius:3px;background:rgba(255,255,255,.16);z-index:3;
-    }
-    .phone-scr{width:100%;height:100%;border-radius:14px;overflow:hidden;background:var(--bg2);position:relative}
-    .ph-appbar{height:36px;background:var(--grad);display:flex;align-items:flex-end;padding:0 9px 7px;gap:5px}
-    .ph-appbar b{width:24px;height:4px;border-radius:2px;background:rgba(255,255,255,.85)}
-    .ph-appbar b.sm{width:13px;margin-left:auto;opacity:.7}
-    .ph-body{padding:9px}
-    .ph-card{height:32px;border-radius:8px;background:var(--surface2);margin-bottom:8px;position:relative;overflow:hidden}
-    .ph-row{display:flex;align-items:center;gap:6px;margin-bottom:8px}
-    .ph-row i{width:18px;height:18px;border-radius:6px;background:var(--surface2);flex-shrink:0;position:relative;overflow:hidden}
-    .ph-row span{height:6px;border-radius:3px;background:var(--surface2);position:relative;overflow:hidden}
-    .ph-row span.w70{width:70%}.ph-row span.w50{width:50%}.ph-row span.w40{width:40%}
-    .shim::after{
-      content:"";position:absolute;inset:0;
-      background:linear-gradient(90deg,transparent,rgba(255,255,255,.13),transparent);
-      translate:-110% 0;animation:shim 1.7s infinite;
-    }
-    @keyframes shim{to{translate:110% 0}}
-    .ph-fab{
-      position:absolute;right:9px;bottom:32px;width:24px;height:24px;border-radius:50%;
-      background:var(--grad);display:grid;place-items:center;color:#fff;font-size:15px;font-weight:700;
-      box-shadow:0 5px 14px rgba(16,185,129,.55);animation:fab-pulse 2.4s ease-in-out infinite;
-    }
-    @keyframes fab-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.13)}}
-    .ph-nav{
-      position:absolute;bottom:0;left:0;right:0;height:26px;background:var(--surface2);
-      display:flex;justify-content:space-around;align-items:center;border-top:1px solid var(--border);
-    }
-    .ph-nav i{width:7px;height:7px;border-radius:50%;background:var(--dim);transition:.35s var(--ease)}
-    .ph-nav i.on{background:var(--p);box-shadow:0 0 9px var(--p);transform:scale(1.3)}
-    @media(max-width:960px){.phone{display:none}}
 
     /* ── RESPONSIVE ── */
     @media(max-width:960px){
@@ -907,19 +865,6 @@
             <div class="geo geo-a"></div>
             <div class="geo geo-b"></div>
             <div class="geo geo-c"></div>
-            <div class="phone" aria-hidden="true">
-              <div class="phone-scr">
-                <div class="ph-appbar"><b></b><b class="sm"></b></div>
-                <div class="ph-body">
-                  <div class="ph-card shim"></div>
-                  <div class="ph-row"><i class="shim"></i><span class="w70 shim"></span></div>
-                  <div class="ph-row"><i class="shim"></i><span class="w50 shim"></span></div>
-                  <div class="ph-row"><i class="shim"></i><span class="w40 shim"></span></div>
-                </div>
-                <div class="ph-fab">+</div>
-                <div class="ph-nav"><i class="on"></i><i></i><i></i><i></i></div>
-              </div>
-            </div>
           </div>
           <div class="float-stat fs-1">
             <div class="n">10+</div><div class="l">Production apps</div>
@@ -1690,17 +1635,6 @@
     el.classList.add('ripple');
     el.addEventListener('pointerdown', makeRipple);
   });
-
-  /* ── PHONE BOTTOM-NAV CYCLE ── */
-  const phNav = document.querySelectorAll('.ph-nav i');
-  if (phNav.length) {
-    let k = 0;
-    setInterval(() => {
-      phNav.forEach(d => d.classList.remove('on'));
-      phNav[k].classList.add('on');
-      k = (k + 1) % phNav.length;
-    }, 1500);
-  }
 
   /* ── CLICK PARTICLE BURST ── */
   if (fine) {
