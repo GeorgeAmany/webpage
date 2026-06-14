@@ -631,6 +631,40 @@
     @keyframes wheel{0%{opacity:0}30%{opacity:1}100%{opacity:0;transform:translate(-50%,11px)}}
     @media(max-width:960px){.scroll-cue{display:none}}
 
+    /* ── EXTRA ANIMATIONS ── */
+    .name-line{display:block;overflow:hidden;padding-bottom:.05em}
+    @media(prefers-reduced-motion:no-preference){
+      .name-line .hero-name{transform:translateY(118%);animation:name-up .95s var(--ease) .15s forwards}
+      .name-line .hero-name.accent{animation:name-up .95s var(--ease) .3s forwards,grad-flow 7s ease infinite}
+      .skill-card .chip{opacity:0;transform:translateY(10px)}
+      .skill-card.in .chip{animation:chip-in .5s var(--ease) forwards}
+      .skill-card.in .chip:nth-child(1){animation-delay:.05s}
+      .skill-card.in .chip:nth-child(2){animation-delay:.10s}
+      .skill-card.in .chip:nth-child(3){animation-delay:.15s}
+      .skill-card.in .chip:nth-child(4){animation-delay:.20s}
+      .skill-card.in .chip:nth-child(5){animation-delay:.25s}
+      .skill-card.in .chip:nth-child(6){animation-delay:.30s}
+      .skill-card.in .chip:nth-child(7){animation-delay:.35s}
+    }
+    @keyframes name-up{to{transform:translateY(0)}}
+    @keyframes chip-in{to{opacity:1;transform:none}}
+
+    /* icon motion */
+    .proj-icon{transition:transform .45s var(--bounce);display:inline-block}
+    .proj-card:hover .proj-icon{transform:scale(1.28) rotate(10deg)}
+    .jrn-icon{transition:transform .45s var(--bounce);display:inline-block}
+    .jrn-step:hover .jrn-icon{transform:scale(1.22) rotate(-8deg)}
+    .logo-mark{will-change:transform}
+
+    /* directional reveals */
+    .reveal-l,.reveal-r{
+      opacity:0;filter:blur(7px);
+      transition:opacity .85s var(--ease),transform .95s var(--ease),filter .85s var(--ease);
+    }
+    .reveal-l{transform:translateX(-44px)}
+    .reveal-r{transform:translateX(44px)}
+    .reveal-l.in,.reveal-r.in{opacity:1;transform:none;filter:none}
+
     /* ── RESPONSIVE ── */
     @media(max-width:960px){
       .hero-grid{grid-template-columns:1fr;gap:32px}
@@ -713,8 +747,8 @@
         <div class="reveal">
           <div class="avail"><div class="avail-dot"></div>Available for work</div>
           <h1>
-            <span class="hero-name">George</span>
-            <span class="hero-name accent">Amany.</span>
+            <span class="name-line"><span class="hero-name">George</span></span>
+            <span class="name-line"><span class="hero-name accent">Amany.</span></span>
           </h1>
           <div class="hero-role">
             <span>I'm a&nbsp;</span><span id="tw"></span>
@@ -794,12 +828,12 @@
         <h2 class="sec-title">Building apps that <span class="grad-text">actually ship.</span></h2>
       </div>
       <div class="about-grid">
-        <div class="card reveal">
+        <div class="card reveal-l">
           <p>Mid-Senior Flutter Developer at <strong>Neural Design Studios</strong>, Cairo — BSc Computer Science. I build production-grade mobile and desktop apps using <strong>feature-first Clean Architecture</strong>, BLoC/Cubit, typed REST APIs (Dio/Retrofit), Firebase, and local storage (Hive, Floor, SQLite).</p>
           <p>I care about code quality: DI with GetIt/Injectable, immutable models with Freezed, proper error handling with Dartz, and CI/CD via GitHub Actions. My work spans education, e-commerce, influencer marketing, food services, and desktop tooling.</p>
           <p>Two open-source packages published on <strong>pub.dev</strong>. Multiple apps live on Google Play and the App Store.</p>
         </div>
-        <div class="info-stack reveal d1">
+        <div class="info-stack reveal-r">
           <div class="info-row"><span class="k">Location</span><span class="v">Cairo, Egypt</span></div>
           <div class="info-row"><span class="k">Role</span><span class="v">Mid-Senior Flutter Dev</span></div>
           <div class="info-row"><span class="k">Email</span><span class="v"><a href="mailto:georgeamany5@gmail.com">georgeamany5@gmail.com</a></span></div>
@@ -1244,7 +1278,7 @@
       io.unobserve(e.target);
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => io.observe(el));
 
   /* ── PROJECT FILTER ── */
   document.querySelectorAll('.f-btn').forEach(btn => {
@@ -1259,13 +1293,13 @@
   });
 
   /* ── CARD 3D TILT ── */
-  document.querySelectorAll('.proj-card').forEach(card => {
+  document.querySelectorAll('.proj-card, .skill-card, .edu-card, .jrn-card').forEach(card => {
     card.style.transition = 'transform .3s var(--ease), border-color .3s, box-shadow .3s';
     card.addEventListener('mousemove', e => {
       const r = card.getBoundingClientRect();
       const x = (e.clientX - r.left) / r.width - .5;
       const y = (e.clientY - r.top) / r.height - .5;
-      card.style.transform = `translateY(-5px) perspective(600px) rotateX(${-y * 7}deg) rotateY(${x * 7}deg)`;
+      card.style.transform = `translateY(-5px) perspective(640px) rotateX(${-y * 6}deg) rotateY(${x * 6}deg)`;
     });
     card.addEventListener('mouseleave', () => { card.style.transform = ''; });
   });
@@ -1409,6 +1443,18 @@
       });
       pw.addEventListener('pointerleave', () => { pw.style.transform = ''; });
     }
+  }
+
+  /* ── HERO SCROLL PARALLAX ── */
+  if (!matchMedia('(prefers-reduced-motion:reduce)').matches) {
+    const hv = document.querySelector('.hero-visual');
+    const tags = document.querySelector('.hero-tags');
+    addEventListener('scroll', () => {
+      const y = scrollY;
+      if (y > innerHeight) return;
+      if (hv) hv.style.translate = `0 ${y * 0.14}px`;
+      if (tags) tags.style.translate = `0 ${y * 0.05}px`;
+    }, { passive: true });
   }
 </script>
 </body>
