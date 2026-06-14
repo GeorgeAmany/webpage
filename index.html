@@ -9,7 +9,7 @@
   <meta property="og:title" content="George Amany — Flutter Developer">
   <meta property="og:description" content="Portfolio of George Amany — Flutter engineer shipping production mobile & desktop apps.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/george.jpg">
+  <meta property="og:image" content="assets/george-portrait.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%236366f1'/%3E%3Cstop offset='100%25' stop-color='%23a855f7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui' font-size='17' font-weight='800' fill='white'%3EG%3C/text%3E%3C/svg%3E">
   <meta name="theme-color" content="#05050e">
@@ -273,21 +273,30 @@
 
     /* photo */
     .hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
-    .photo-wrap{position:relative;width:min(295px,70vw);aspect-ratio:1}
+    .photo-wrap{
+      position:relative;width:min(320px,74vw);aspect-ratio:4/5;
+      transform-style:preserve-3d;transition:transform .3s var(--ease);
+    }
     .photo-ring{
-      position:absolute;inset:-4px;border-radius:30px;opacity:.85;
+      position:absolute;inset:-4px;border-radius:32px;opacity:.85;
       background:conic-gradient(from 0deg,#6366f1,#a855f7,#06b6d4,#10b981,#6366f1);
       filter:blur(7px);
       animation:ring-spin 8s linear infinite;
     }
     @keyframes ring-spin{to{transform:rotate(360deg)}}
     .photo-inner{
-      position:relative;width:100%;height:100%;border-radius:26px;overflow:hidden;
+      position:relative;width:100%;height:100%;border-radius:28px;overflow:hidden;
       border:3px solid var(--bg);
       animation:float-y 6s ease-in-out infinite;
       box-shadow:0 24px 60px rgba(0,0,0,.45);
     }
-    .photo-inner img{width:100%;height:100%;object-fit:cover}
+    .photo-inner::after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(160deg,transparent 55%,rgba(5,5,14,.5));
+      pointer-events:none;
+    }
+    :root.light .photo-inner::after{background:linear-gradient(160deg,transparent 60%,rgba(40,35,110,.18))}
+    .photo-inner img{width:100%;height:100%;object-fit:cover;object-position:center 12%}
     @keyframes float-y{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 
     .geo{position:absolute;border-radius:50%;animation:float-y 5s ease-in-out infinite}
@@ -580,6 +589,46 @@
     #particles{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55}
     :root.light #particles{opacity:.4}
 
+    /* ── CUSTOM CURSOR ── */
+    #cur,#curd{
+      position:fixed;top:0;left:0;z-index:500;pointer-events:none;border-radius:50%;
+      mix-blend-mode:difference;will-change:transform;translate:-50% -50%;
+    }
+    #cur{
+      width:34px;height:34px;border:1.5px solid #fff;
+      transition:width .25s var(--ease),height .25s var(--ease),background .25s,opacity .3s;
+    }
+    #cur.grow{width:58px;height:58px;background:rgba(255,255,255,.16);border-color:transparent}
+    #curd{width:6px;height:6px;background:#fff}
+    body.cursor-on{cursor:none}
+    body.cursor-on a,body.cursor-on button,body.cursor-on .f-btn,body.cursor-on .chip{cursor:none}
+
+    /* ── GRAIN ── */
+    .grain{
+      position:fixed;inset:0;z-index:350;pointer-events:none;opacity:.04;
+      mix-blend-mode:overlay;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ── SCROLL CUE ── */
+    .scroll-cue{
+      position:absolute;bottom:22px;left:50%;translate:-50% 0;
+      display:flex;flex-direction:column;align-items:center;gap:8px;
+      color:var(--dim);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+      animation:cue-bob 2.6s ease-in-out infinite;
+    }
+    @keyframes cue-bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+    .scroll-cue .mouse{
+      width:22px;height:34px;border:2px solid var(--dim);border-radius:12px;position:relative;
+    }
+    .scroll-cue .mouse::before{
+      content:"";position:absolute;top:6px;left:50%;translate:-50% 0;
+      width:3px;height:6px;border-radius:2px;background:var(--p);
+      animation:wheel 1.6s ease-in-out infinite;
+    }
+    @keyframes wheel{0%{opacity:0}30%{opacity:1}100%{opacity:0;transform:translate(-50%,11px)}}
+    @media(max-width:960px){.scroll-cue{display:none}}
+
     /* ── RESPONSIVE ── */
     @media(max-width:960px){
       .hero-grid{grid-template-columns:1fr;gap:32px}
@@ -625,6 +674,9 @@
   <div class="bg-glow bg-glow-3"></div>
 </div>
 <canvas id="particles" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div id="cur" aria-hidden="true"></div>
+<div id="curd" aria-hidden="true"></div>
 
 <!-- NAV -->
 <header class="nav-wrap" id="nav">
@@ -684,7 +736,7 @@
           <div class="photo-wrap">
             <div class="photo-ring"></div>
             <div class="photo-inner">
-              <img src="assets/george.jpg" alt="George Amany" width="295" height="295">
+              <img src="assets/george-portrait.jpg" alt="George Amany — Flutter Developer" width="320" height="400">
             </div>
             <div class="geo geo-a"></div>
             <div class="geo geo-b"></div>
@@ -707,6 +759,7 @@
         <div class="stat-box"><div class="n">2+</div><div class="l">Years at Neural Design Studios</div></div>
       </div>
     </div>
+    <a class="scroll-cue" href="#about" aria-label="Scroll down"><div class="mouse"></div>Scroll</a>
   </section>
 
   <!-- TICKER -->
@@ -1317,6 +1370,43 @@
       requestAnimationFrame(frame);
     }
     frame();
+  }
+
+  /* ── CUSTOM CURSOR ── */
+  if (fine) {
+    document.body.classList.add('cursor-on');
+    const ring = document.getElementById('cur'), dot = document.getElementById('curd');
+    let rx = innerWidth / 2, ry = innerHeight / 2, dx = rx, dy = ry;
+    addEventListener('pointermove', e => {
+      dx = e.clientX; dy = e.clientY;
+      dot.style.transform = `translate(${dx}px,${dy}px)`;
+    }, { passive: true });
+    (function ring_loop() {
+      rx += (dx - rx) * .18; ry += (dy - ry) * .18;
+      ring.style.transform = `translate(${rx}px,${ry}px)`;
+      requestAnimationFrame(ring_loop);
+    })();
+    const grow = 'a,button,.f-btn,.chip,.proj-card,.jrn-card,.htag,.info-row';
+    document.querySelectorAll(grow).forEach(el => {
+      el.addEventListener('pointerenter', () => ring.classList.add('grow'));
+      el.addEventListener('pointerleave', () => ring.classList.remove('grow'));
+    });
+    addEventListener('pointerdown', () => ring.classList.add('grow'));
+    addEventListener('pointerup', () => ring.classList.remove('grow'));
+  }
+
+  /* ── HERO PHOTO 3D TILT ── */
+  if (fine) {
+    const pw = document.querySelector('.photo-wrap');
+    if (pw) {
+      pw.addEventListener('pointermove', e => {
+        const r = pw.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - .5;
+        const y = (e.clientY - r.top) / r.height - .5;
+        pw.style.transform = `perspective(820px) rotateX(${-y * 10}deg) rotateY(${x * 10}deg) scale(1.02)`;
+      });
+      pw.addEventListener('pointerleave', () => { pw.style.transform = ''; });
+    }
   }
 </script>
 </body>
