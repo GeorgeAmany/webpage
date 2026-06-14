@@ -500,13 +500,6 @@
     }
     .proj-card:hover{transform:translateY(-10px) scale(1.025);border-color:var(--border2);box-shadow:0 30px 60px rgba(0,0,0,.5)}
     :root.light .proj-card:hover{box-shadow:0 30px 60px rgba(16,60,45,.18)}
-    /* "shy" cards: dim by default, focus on hover — desktop only.
-       Scoped to .reveal.in so the entrance animation is preserved. */
-    @media(hover:hover) and (pointer:fine){
-      .proj-grid .proj-card.reveal.in{opacity:.64;filter:saturate(.7) brightness(.94)}
-      .proj-grid:hover .proj-card.reveal.in{opacity:.4;filter:saturate(.5) brightness(.88)}
-      .proj-grid .proj-card.reveal.in:hover{opacity:1;filter:none}
-    }
     .proj-card::after{
       content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
       background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.07) 48%,transparent 62%);
@@ -529,6 +522,44 @@
       border:1px solid var(--border);color:var(--muted);transition:.2s;
     }
     .p-link:hover{background:var(--grad);border-color:transparent;color:#fff}
+
+    /* ── FLIP CARDS (desktop only) ── */
+    @media(hover:hover) and (pointer:fine){
+      .proj-card.flip-on{
+        background:transparent;border:none;overflow:visible;box-shadow:none;
+        height:250px;perspective:1300px;
+      }
+      .proj-card.flip-on:hover{transform:none;box-shadow:none}
+      .proj-card.flip-on::after{display:none}
+      .flip{
+        position:relative;width:100%;height:100%;transform-style:preserve-3d;
+        transition:transform .7s var(--ease);
+      }
+      .proj-card.flip-on:hover .flip{transform:rotateY(180deg)}
+      .face{
+        position:absolute;inset:0;border-radius:var(--R);overflow:hidden;
+        border:1px solid var(--border);background:var(--surface);
+        backface-visibility:hidden;-webkit-backface-visibility:hidden;
+        display:flex;flex-direction:column;box-shadow:var(--shadow-sm);
+      }
+      .face .proj-stripe{height:5px;background:var(--c,var(--grad));flex-shrink:0}
+      .face.front{align-items:center;justify-content:center;text-align:center;padding:26px 20px}
+      .face.front .proj-icon{font-size:48px;margin-bottom:14px}
+      .face.front .proj-domain{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+      .face.front .proj-name{font-family:var(--display);font-size:1.22rem;font-weight:700}
+      .flip-hint{
+        margin-top:16px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+        color:var(--p-light);display:inline-flex;align-items:center;gap:6px;opacity:.9;
+      }
+      .flip-hint::after{content:"⟳";font-size:13px;animation:hint-spin 4s linear infinite}
+      @keyframes hint-spin{to{transform:rotate(360deg)}}
+      .face.back{transform:rotateY(180deg)}
+      .back-body{padding:18px;display:flex;flex-direction:column;gap:9px;height:100%}
+      .face.back .proj-name{font-family:var(--display);font-size:1rem;font-weight:700}
+      .face.back .proj-desc{font-size:12.5px;color:var(--muted);line-height:1.5;flex:1}
+      .face.back .proj-tech{font-size:10.5px;color:var(--dim);line-height:1.5;border-top:1px solid var(--border);padding-top:7px}
+      .face.back .proj-links{display:flex;flex-wrap:wrap;gap:6px}
+    }
 
     /* ── EDUCATION ── */
     .edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -1420,8 +1451,50 @@
     });
   });
 
+  /* ── BUILD FLIP CARDS (desktop only) ── */
+  if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
+    document.querySelectorAll('.proj-card').forEach(card => {
+      const body = card.querySelector('.proj-body');
+      if (!body) return;
+      const head = body.querySelector('.proj-head');
+      const icon = head && head.querySelector('.proj-icon');
+      const domain = head && head.querySelector('.proj-domain');
+      const name = head && head.querySelector('.proj-name');
+      const desc = body.querySelector('.proj-desc');
+      const tech = body.querySelector('.proj-tech');
+      const links = body.querySelector('.proj-links');
+      const nameTxt = name ? name.textContent : '';
+
+      const flip = document.createElement('div'); flip.className = 'flip';
+
+      const front = document.createElement('div'); front.className = 'face front';
+      front.innerHTML = '<div class="proj-stripe"></div>';
+      if (icon) front.appendChild(icon.cloneNode(true));
+      const fd = document.createElement('div'); fd.className = 'proj-domain';
+      fd.textContent = domain ? domain.textContent : ''; front.appendChild(fd);
+      const fn = document.createElement('div'); fn.className = 'proj-name';
+      fn.textContent = nameTxt; front.appendChild(fn);
+      const hint = document.createElement('div'); hint.className = 'flip-hint';
+      hint.textContent = 'Details'; front.appendChild(hint);
+
+      const back = document.createElement('div'); back.className = 'face back';
+      const stripe2 = document.createElement('div'); stripe2.className = 'proj-stripe';
+      const bb = document.createElement('div'); bb.className = 'back-body';
+      const bn = document.createElement('div'); bn.className = 'proj-name'; bn.textContent = nameTxt;
+      bb.appendChild(bn);
+      if (desc) bb.appendChild(desc);
+      if (tech) bb.appendChild(tech);
+      if (links) bb.appendChild(links);
+      back.appendChild(stripe2); back.appendChild(bb);
+
+      flip.appendChild(front); flip.appendChild(back);
+      card.replaceChildren(flip);
+      card.classList.add('flip-on');
+    });
+  }
+
   /* ── CARD 3D TILT ── */
-  document.querySelectorAll('.proj-card, .skill-card, .edu-card, .jrn-card').forEach(card => {
+  document.querySelectorAll('.skill-card, .edu-card, .jrn-card').forEach(card => {
     card.style.transition = 'transform .3s var(--ease), border-color .3s, box-shadow .3s, opacity .45s ease, filter .45s ease';
     card.addEventListener('mousemove', e => {
       const r = card.getBoundingClientRect();
