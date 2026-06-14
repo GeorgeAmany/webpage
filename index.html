@@ -500,6 +500,13 @@
     }
     .proj-card:hover{transform:translateY(-10px) scale(1.025);border-color:var(--border2);box-shadow:0 30px 60px rgba(0,0,0,.5)}
     :root.light .proj-card:hover{box-shadow:0 30px 60px rgba(16,60,45,.18)}
+    /* "shy" cards: dim by default, focus on hover — desktop only.
+       Scoped to .reveal.in so the entrance animation is preserved. */
+    @media(hover:hover) and (pointer:fine){
+      .proj-grid .proj-card.reveal.in{opacity:.64;filter:saturate(.7) brightness(.94)}
+      .proj-grid:hover .proj-card.reveal.in{opacity:.4;filter:saturate(.5) brightness(.88)}
+      .proj-grid .proj-card.reveal.in:hover{opacity:1;filter:none}
+    }
     .proj-card::after{
       content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
       background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.07) 48%,transparent 62%);
@@ -1470,7 +1477,7 @@
 
   /* ── CARD 3D TILT ── */
   document.querySelectorAll('.proj-card, .skill-card, .edu-card, .jrn-card').forEach(card => {
-    card.style.transition = 'transform .3s var(--ease), border-color .3s, box-shadow .3s';
+    card.style.transition = 'transform .3s var(--ease), border-color .3s, box-shadow .3s, opacity .45s ease, filter .45s ease';
     card.addEventListener('mousemove', e => {
       const r = card.getBoundingClientRect();
       const x = (e.clientX - r.left) / r.width - .5;
