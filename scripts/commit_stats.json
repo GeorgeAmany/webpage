@@ -1,0 +1,58 @@
+{
+  "author": "GeorgeAmany",
+  "total": 964,
+  "projects": [
+    {
+      "project": "Fuse-mobile",
+      "commits": 185
+    },
+    {
+      "project": "taleem_student",
+      "commits": 237
+    },
+    {
+      "project": "taleem_employees",
+      "commits": 329
+    },
+    {
+      "project": "noor-mobile",
+      "commits": 67
+    },
+    {
+      "project": "zahran-mobile",
+      "commits": 26
+    },
+    {
+      "project": "zahran_desktop",
+      "commits": 19
+    },
+    {
+      "project": "schupply_mobile",
+      "commits": 27
+    },
+    {
+      "project": "binge-app",
+      "commits": 3
+    },
+    {
+      "project": "Alwefaq-Foods-Mobile-App-Webview",
+      "commits": 5
+    },
+    {
+      "project": "horse_time_user",
+      "commits": 17
+    },
+    {
+      "project": "proposal_desktop",
+      "commits": 23
+    },
+    {
+      "project": "animated_contact_us",
+      "commits": 12
+    },
+    {
+      "project": "liquid_wave_indicator",
+      "commits": 14
+    }
+  ]
+}
