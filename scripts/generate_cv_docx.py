@@ -8,7 +8,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-OUTPUT = ROOT / "assets" / "George_Amany_CV_2025.docx"
+OUTPUT = ROOT / "assets" / "George_Amany_CV_2026.docx"
 
 doc = Document()
 style = doc.styles["Normal"]
