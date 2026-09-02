@@ -11,8 +11,8 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/george-portrait.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2310b981'/%3E%3Cstop offset='100%25' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui' font-size='17' font-weight='800' fill='white'%3EG%3C/text%3E%3C/svg%3E">
-  <meta name="theme-color" content="#0a0f11">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%233d6b4f'/%3E%3Cstop offset='100%25' stop-color='%235c7a4a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui' font-size='17' font-weight='800' fill='white'%3EG%3C/text%3E%3C/svg%3E">
+  <meta name="theme-color" content="#0e1210">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
@@ -21,32 +21,33 @@
   <style>
     /* ── TOKENS ── */
     :root {
-      --bg:           #0a0f11;
-      --bg2:          #10171a;
+      --bg:           #0e1210;
+      --bg2:          #161d18;
       --surface:      rgba(255,255,255,.04);
       --surface2:     rgba(255,255,255,.062);
       --border:       rgba(255,255,255,.078);
-      --border2:      rgba(45,212,167,.28);
-      --text:         #e8efec;
-      --muted:        #98a6a4;
-      --dim:          #61706e;
-      --p:            #10b981;
-      --p-light:      #34d399;
-      --p-soft:       rgba(16,185,129,.15);
-      --purple:       #06b6d4;
-      --purple-soft:  rgba(6,182,212,.13);
-      --cyan:         #06b6d4;
-      --cyan-soft:    rgba(6,182,212,.11);
-      --green:        #10b981;
-      --green-soft:   rgba(16,185,129,.11);
-      --amber:        #f59e0b;
-      --amber-soft:   rgba(245,158,11,.11);
-      --rose:         #f43f5e;
-      --rose-soft:    rgba(244,63,94,.11);
-      --grad:         linear-gradient(135deg,#10b981,#06b6d4);
-      --grad-text:    linear-gradient(135deg,#34d399,#22d3ee);
+      --border2:      rgba(107,155,120,.32);
+      --text:         #e8ebe6;
+      --muted:        #9aa89e;
+      --dim:          #6b7a72;
+      --p:            #4a7c59;
+      --p-light:      #6b9b78;
+      --p-soft:       rgba(74,124,89,.16);
+      --purple:       #5c7a4a;
+      --purple-soft:  rgba(92,122,74,.14);
+      --cyan:         #8fad7a;
+      --cyan-soft:    rgba(143,173,122,.12);
+      --green:        #3d6b4f;
+      --green-soft:   rgba(61,107,79,.12);
+      --amber:        #c4a574;
+      --amber-soft:   rgba(196,165,116,.14);
+      --rose:         #b87a6a;
+      --rose-soft:    rgba(184,122,106,.12);
+      --grad:         linear-gradient(135deg,#3d6b4f,#5c7a4a);
+      --grad-text:    linear-gradient(135deg,#6b9b78,#8fad7a,#c4a574);
       --shadow:       0 12px 40px rgba(0,0,0,.42);
       --shadow-sm:    0 4px 16px rgba(0,0,0,.3);
+      --accent-glow:  rgba(74,124,89,.28);
       --R:            18px;
       --R-sm:         10px;
       --R-lg:         26px;
@@ -57,36 +58,37 @@
       --bounce:       cubic-bezier(.34,1.56,.64,1);
     }
     :root.light {
-      --bg:          #eef3f1;
-      --bg2:         #ffffff;
-      --surface:     rgba(255,255,255,.82);
+      --bg:          #f4f2ed;
+      --bg2:         #faf9f6;
+      --surface:     rgba(255,255,255,.88);
       --surface2:    #ffffff;
-      --border:      rgba(15,40,32,.1);
-      --border2:     rgba(5,150,105,.3);
-      --text:        #0d1a16;
-      --muted:       #47564f;
-      --dim:         #76847d;
-      --p:           #059669;
-      --p-light:     #10b981;
-      --p-soft:      rgba(5,150,105,.12);
-      --purple-soft: rgba(8,145,178,.1);
-      --cyan-soft:   rgba(8,145,178,.1);
-      --green-soft:  rgba(5,150,105,.1);
-      --amber-soft:  rgba(217,119,6,.1);
-      --rose-soft:   rgba(225,29,72,.1);
-      --grad-text:   linear-gradient(135deg,#059669,#0891b2);
-      --shadow:      0 16px 44px rgba(16,60,45,.14);
-      --shadow-sm:   0 6px 18px rgba(16,60,45,.1);
+      --border:      rgba(26,31,28,.1);
+      --border2:     rgba(61,107,79,.28);
+      --text:        #1a1f1c;
+      --muted:       #4f5c54;
+      --dim:         #728078;
+      --p:           #3d6b4f;
+      --p-light:     #4a7c59;
+      --p-soft:      rgba(61,107,79,.12);
+      --purple-soft: rgba(92,122,74,.1);
+      --cyan-soft:   rgba(143,173,122,.1);
+      --green-soft:  rgba(61,107,79,.1);
+      --amber-soft:  rgba(196,165,116,.12);
+      --rose-soft:   rgba(184,122,106,.1);
+      --grad-text:   linear-gradient(135deg,#2f5d3a,#4a7c59,#6b8f5a);
+      --shadow:      0 16px 44px rgba(26,40,32,.12);
+      --shadow-sm:   0 6px 18px rgba(26,40,32,.08);
+      --accent-glow: rgba(61,107,79,.22);
     }
     :root.light .grad-text{
-      background:linear-gradient(120deg,#047857,#0891b2,#65a30d,#047857);
+      background:linear-gradient(120deg,#2f5d3a,#4a7c59,#6b8f5a,#b8a078,#2f5d3a);
       background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
     }
     :root.light .hero-name.accent{
-      background:linear-gradient(120deg,#047857,#0891b2,#65a30d,#047857);
+      background:linear-gradient(120deg,#2f5d3a,#4a7c59,#6b8f5a,#b8a078,#2f5d3a);
       background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
     }
-    :root.light .eyebrow{color:#059669}
+    :root.light .eyebrow{color:#3d6b4f}
     :root.light .card,:root.light .stat-box,:root.light .skill-card,
     :root.light .proj-card,:root.light .edu-card,:root.light .info-row{box-shadow:var(--shadow-sm)}
 
@@ -124,15 +126,15 @@
       background-size:32px 32px;
     }
     :root.light .dot-grid{
-      background-image:radial-gradient(circle,rgba(30,30,90,.05) 1px,transparent 1px);
+      background-image:radial-gradient(circle,rgba(61,107,79,.06) 1px,transparent 1px);
     }
     .bg-glow{
       position:absolute;border-radius:50%;filter:blur(110px);
       animation:gdrift 22s ease-in-out infinite alternate;
     }
-    .bg-glow-1{width:600px;height:600px;background:rgba(16,185,129,.08);top:-200px;left:-160px}
-    .bg-glow-2{width:480px;height:480px;background:rgba(6,182,212,.055);top:35%;right:-200px;animation-delay:-9s}
-    .bg-glow-3{width:400px;height:400px;background:rgba(45,212,167,.045);bottom:-50px;left:22%;animation-delay:-18s}
+    .bg-glow-1{width:600px;height:600px;background:rgba(61,107,79,.09);top:-200px;left:-160px}
+    .bg-glow-2{width:480px;height:480px;background:rgba(92,122,74,.07);top:35%;right:-200px;animation-delay:-9s}
+    .bg-glow-3{width:400px;height:400px;background:rgba(196,165,116,.06);bottom:-50px;left:22%;animation-delay:-18s}
     @keyframes gdrift{to{transform:translate(18px,-20px) scale(1.05)}}
 
     /* ── LAYOUT ── */
@@ -142,7 +144,7 @@
     /* ── TYPE ── */
     h1,h2,h3,h4{font-family:var(--display);letter-spacing:-.02em;line-height:1.1}
     .grad-text{
-      background:linear-gradient(120deg,#34d399,#22d3ee,#a3e635,#34d399);
+      background:linear-gradient(120deg,#6b9b78,#8fad7a,#c4a574,#6b9b78);
       background-size:300% 100%;
       -webkit-background-clip:text;background-clip:text;color:transparent;
       animation:grad-flow 7s ease infinite;
@@ -175,7 +177,7 @@
     .logo-mark{
       width:36px;height:36px;border-radius:10px;background:var(--grad);
       display:grid;place-items:center;font-size:15px;font-weight:800;color:#fff;
-      box-shadow:0 6px 20px rgba(16,185,129,.35);
+      box-shadow:0 6px 20px var(--accent-glow);
       transition:transform .3s var(--bounce);
     }
     .nav-logo:hover .logo-mark{transform:rotate(-10deg) scale(1.12)}
@@ -201,8 +203,8 @@
       transition:transform .25s var(--ease),background .25s,border-color .25s,box-shadow .25s;
     }
     .btn:hover{background:var(--surface2);border-color:var(--border2);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
-    .btn-primary{background:var(--grad);border:none;color:#fff;box-shadow:0 8px 26px rgba(16,185,129,.32)}
-    .btn-primary:hover{box-shadow:0 14px 36px rgba(16,185,129,.5);transform:translateY(-3px)}
+    .btn-primary{background:var(--grad);border:none;color:#fff;box-shadow:0 8px 26px var(--accent-glow)}
+    .btn-primary:hover{box-shadow:0 14px 36px rgba(74,124,89,.45);transform:translateY(-3px)}
     .btn-sm{padding:8px 16px;font-size:13px}
     .dl-btn{position:relative;overflow:hidden;isolation:isolate}
     .dl-btn>span{position:relative;z-index:1;color:#fff}
@@ -231,7 +233,7 @@
       display:inline-flex;align-items:center;gap:8px;
       font-size:12px;font-weight:500;color:var(--green);
       padding:6px 14px;border-radius:999px;
-      background:var(--green-soft);border:1px solid rgba(16,185,129,.22);
+      background:var(--green-soft);border:1px solid rgba(74,124,89,.22);
       margin-bottom:20px;width:fit-content;
     }
     .avail-dot{
@@ -239,8 +241,8 @@
       animation:pulse-dot 2.2s ease-in-out infinite;
     }
     @keyframes pulse-dot{
-      0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,.55)}
-      50%{box-shadow:0 0 0 6px rgba(16,185,129,0)}
+      0%,100%{box-shadow:0 0 0 0 rgba(74,124,89,.5)}
+      50%{box-shadow:0 0 0 6px rgba(74,124,89,0)}
     }
 
     .hero-name{
@@ -248,7 +250,7 @@
       letter-spacing:-.04em;line-height:.95;display:block;
     }
     .hero-name.accent{
-      background:linear-gradient(120deg,#34d399,#22d3ee,#a3e635,#34d399);
+      background:linear-gradient(120deg,#6b9b78,#8fad7a,#c4a574,#6b9b78);
       background-size:300% 100%;
       -webkit-background-clip:text;background-clip:text;color:transparent;
       animation:grad-flow 7s ease infinite;
@@ -281,7 +283,7 @@
     }
     .hero-visual::before{
       content:"";position:absolute;top:50%;left:50%;width:115%;height:115%;border-radius:50%;
-      background:radial-gradient(circle,rgba(16,185,129,.15),rgba(6,182,212,.05) 45%,transparent 70%);
+      background:radial-gradient(circle,rgba(74,124,89,.16),rgba(92,122,74,.06) 45%,transparent 70%);
       filter:blur(34px);pointer-events:none;
       animation:backdrop-breathe 7s ease-in-out infinite;
     }
@@ -291,7 +293,7 @@
     }
     .photo-ring{
       position:absolute;inset:-3px;border-radius:32px;opacity:.55;
-      background:conic-gradient(from 0deg,#10b981,#06b6d4,#34d399,#2dd4a7,#10b981);
+      background:conic-gradient(from 0deg,#3d6b4f,#5c7a4a,#6b9b78,#8fad7a,#3d6b4f);
       filter:blur(11px);
       animation:ring-spin 14s linear infinite;
     }
@@ -307,12 +309,12 @@
       background:linear-gradient(160deg,transparent 55%,rgba(5,5,14,.5));
       pointer-events:none;
     }
-    :root.light .photo-inner::after{background:linear-gradient(160deg,transparent 60%,rgba(40,35,110,.18))}
+    :root.light .photo-inner::after{background:linear-gradient(160deg,transparent 60%,rgba(26,40,32,.12))}
     .photo-inner img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
     @keyframes float-y{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 
     .geo{position:absolute;border-radius:50%;animation:float-y 5s ease-in-out infinite}
-    .geo-a{width:56px;height:56px;border-radius:14px;background:var(--grad);top:-14px;right:-14px;animation-delay:-2s;opacity:.9;box-shadow:0 8px 24px rgba(16,185,129,.4)}
+    .geo-a{width:56px;height:56px;border-radius:14px;background:var(--grad);top:-14px;right:-14px;animation-delay:-2s;opacity:.9;box-shadow:0 8px 24px var(--accent-glow)}
     .geo-b{width:42px;height:42px;border:2px solid var(--cyan);background:var(--cyan-soft);bottom:22px;left:-20px;animation-delay:-3.5s}
     .geo-c{width:26px;height:26px;border:2px solid var(--green);background:var(--green-soft);top:38%;right:-26px;animation-delay:-1s}
 
@@ -389,21 +391,21 @@
       animation:node-pulse 2.6s ease-in-out infinite;
     }
     @keyframes node-pulse{
-      0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,.5),0 0 0 5px var(--p-soft)}
-      50%{box-shadow:0 0 0 7px rgba(16,185,129,0),0 0 0 5px var(--p-soft)}
+      0%,100%{box-shadow:0 0 0 0 rgba(74,124,89,.45),0 0 0 5px var(--p-soft)}
+      50%{box-shadow:0 0 0 7px rgba(74,124,89,0),0 0 0 5px var(--p-soft)}
     }
     .tl-card{
       position:relative;overflow:hidden;
       padding:24px 26px;border-radius:var(--R);border:1px solid var(--border);
-      background:linear-gradient(135deg,rgba(16,185,129,.09),rgba(6,182,212,.05)),var(--bg2);
+      background:linear-gradient(135deg,rgba(74,124,89,.09),rgba(196,165,116,.04)),var(--bg2);
       transition:transform .45s var(--ease),border-color .4s,box-shadow .4s;
     }
     :root.light .tl-card{
-      background:linear-gradient(135deg,rgba(16,185,129,.07),rgba(6,182,212,.05)),var(--surface2);
+      background:linear-gradient(135deg,rgba(74,124,89,.07),rgba(196,165,116,.04)),var(--surface2);
     }
     .tl-card::before{
       content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--grad);
-      box-shadow:0 0 18px rgba(16,185,129,.5);
+      box-shadow:0 0 18px rgba(74,124,89,.45);
     }
     .tl-card::after{
       content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
@@ -434,7 +436,7 @@
     .jrn-num{
       width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
       font-family:var(--display);font-weight:800;font-size:1rem;color:#fff;
-      background:var(--grad);box-shadow:0 8px 24px rgba(16,185,129,.42);margin-bottom:20px;position:relative;
+      background:var(--grad);box-shadow:0 8px 24px var(--accent-glow);margin-bottom:20px;position:relative;
       transition:transform .4s var(--bounce);
     }
     .jrn-step:hover .jrn-num{transform:scale(1.12) rotate(-6deg)}
@@ -480,7 +482,7 @@
       border:1px solid var(--border);color:var(--muted);background:var(--surface);
       transition:.2s;cursor:default;
     }
-    .chip:hover{color:var(--p-light);border-color:var(--p);background:var(--p-soft);transform:translateY(-2px);box-shadow:0 4px 14px rgba(16,185,129,.25)}
+    .chip:hover{color:var(--p-light);border-color:var(--p);background:var(--p-soft);transform:translateY(-2px);box-shadow:0 4px 14px rgba(74,124,89,.22)}
 
     /* ── PROJECTS ── */
     .proj-filter{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
@@ -490,7 +492,7 @@
       cursor:pointer;transition:.2s;
     }
     .f-btn:hover{color:var(--text);border-color:var(--border2)}
-    .f-btn.on{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 4px 16px rgba(16,185,129,.3)}
+    .f-btn.on{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 4px 16px var(--accent-glow)}
 
     .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
     .proj-card{
@@ -499,7 +501,7 @@
       transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;
     }
     .proj-card:hover{transform:translateY(-10px) scale(1.025);border-color:var(--border2);box-shadow:0 30px 60px rgba(0,0,0,.5)}
-    :root.light .proj-card:hover{box-shadow:0 30px 60px rgba(16,60,45,.18)}
+    :root.light .proj-card:hover{box-shadow:0 30px 60px rgba(26,40,32,.14)}
     .proj-card::after{
       content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
       background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.07) 48%,transparent 62%);
@@ -604,11 +606,11 @@
     /* ── MOUSE SPOTLIGHT ── */
     #spot{
       position:fixed;width:520px;height:520px;border-radius:50%;z-index:0;pointer-events:none;
-      background:radial-gradient(circle,rgba(16,185,129,.07),transparent 62%);
+      background:radial-gradient(circle,rgba(74,124,89,.07),transparent 62%);
       transform:translate(-50%,-50%);left:50%;top:30%;
       transition:opacity .5s;mix-blend-mode:screen;
     }
-    :root.light #spot{background:radial-gradient(circle,rgba(5,150,105,.13),transparent 62%);mix-blend-mode:multiply}
+    :root.light #spot{background:radial-gradient(circle,rgba(61,107,79,.12),transparent 62%);mix-blend-mode:multiply}
 
     /* ── ANIMATED GLOW BORDER ── */
     @property --bd-angle{syntax:'<angle>';initial-value:0deg;inherits:false}
@@ -634,9 +636,9 @@
     .reveal.in .sec-title::after{width:64px}
 
     /* light-mode background glows (stronger) */
-    :root.light .bg-glow-1{background:rgba(16,185,129,.2)}
-    :root.light .bg-glow-2{background:rgba(6,182,212,.16)}
-    :root.light .bg-glow-3{background:rgba(6,182,212,.13)}
+    :root.light .bg-glow-1{background:rgba(61,107,79,.18)}
+    :root.light .bg-glow-2{background:rgba(92,122,74,.14)}
+    :root.light .bg-glow-3{background:rgba(196,165,116,.12)}
 
     /* particle canvas */
     #particles{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.38}
@@ -727,7 +729,7 @@
     .loader-g{
       width:66px;height:66px;border-radius:19px;background:var(--grad);
       display:grid;place-items:center;font-family:var(--display);font-weight:800;
-      font-size:31px;color:#fff;box-shadow:0 16px 48px rgba(16,185,129,.55);
+      font-size:31px;color:#fff;box-shadow:0 16px 48px rgba(74,124,89,.45);
       animation:loader-pop .8s var(--bounce) both;
     }
     @keyframes loader-pop{0%{transform:scale(.2) rotate(-35deg);opacity:0}100%{transform:none;opacity:1}}
@@ -1121,7 +1123,7 @@
 
       <div class="proj-grid">
 
-        <article class="proj-card reveal" data-cat="edu" style="--c:linear-gradient(90deg,#10b981,#8b5cf6)">
+        <article class="proj-card reveal" data-cat="edu" style="--c:linear-gradient(90deg,#3d6b4f,#5c7a4a)">
           <div class="proj-stripe"></div>
           <div class="proj-body">
             <div class="proj-head"><div><div class="proj-domain">Education</div><div class="proj-name">Noor Institute</div></div><div class="proj-icon">🎓</div></div>
@@ -1134,7 +1136,7 @@
           </div>
         </article>
 
-        <article class="proj-card reveal d1" data-cat="edu" style="--c:linear-gradient(90deg,#8b5cf6,#06b6d4)">
+        <article class="proj-card reveal d1" data-cat="edu" style="--c:linear-gradient(90deg,#5c7a4a,#6b8f5a)">
           <div class="proj-stripe"></div>
           <div class="proj-body">
             <div class="proj-head"><div><div class="proj-domain">Influencer Marketing</div><div class="proj-name">Fuse</div></div><div class="proj-icon">⚡</div></div>
@@ -1143,7 +1145,7 @@
           </div>
         </article>
 
-        <article class="proj-card reveal d2" data-cat="edu" style="--c:linear-gradient(90deg,#0891b2,#06b6d4)">
+        <article class="proj-card reveal d2" data-cat="edu" style="--c:linear-gradient(90deg,#4a6741,#3d6b4f)">
           <div class="proj-stripe"></div>
           <div class="proj-body">
             <div class="proj-head"><div><div class="proj-domain">Islamic Education</div><div class="proj-name">Taleem</div></div><div class="proj-icon">📖</div></div>
@@ -1152,7 +1154,7 @@
           </div>
         </article>
 
-        <article class="proj-card reveal" data-cat="ecom" style="--c:linear-gradient(90deg,#06b6d4,#0891b2)">
+        <article class="proj-card reveal" data-cat="ecom" style="--c:linear-gradient(90deg,#6b8f5a,#3d6b4f)">
           <div class="proj-stripe"></div>
           <div class="proj-body">
             <div class="proj-head"><div><div class="proj-domain">E-Commerce</div><div class="proj-name">Schupply</div></div><div class="proj-icon">🛍️</div></div>
@@ -1162,7 +1164,7 @@
           </div>
         </article>
 
-        <article class="proj-card reveal d1" data-cat="ecom desk" style="--c:linear-gradient(90deg,#f59e0b,#d97706)">
+        <article class="proj-card reveal d1" data-cat="ecom desk" style="--c:linear-gradient(90deg,#b8a078,#5c7a4a)">
           <div class="proj-stripe"></div>
           <div class="proj-body">
             <div class="proj-head"><div><div class="proj-domain">E-Commerce & POS</div><div class="proj-name">Zahran</div></div><div class="proj-icon">🏪</div></div>
@@ -1171,7 +1173,7 @@
           </div>
         </article>
 
-        <article class="proj-card reveal d2" data-cat="food" style="--c:linear-gradient(90deg,#10b981,#059669)">
+        <article class="proj-card reveal d2" data-cat="food" style="--c:linear-gradient(90deg,#3d6b4f,#2f5d3a)">
           <div class="proj-stripe"></div>
           <div class="proj-body">
             <div class="proj-head"><div><div class="proj-domain">Food Subscription</div><div class="proj-name">Binge</div></div><div class="proj-icon">🍽️</div></div>
@@ -1183,7 +1185,7 @@
           </div>
         </article>
 
-        <article class="proj-card reveal" data-cat="food" style="--c:linear-gradient(90deg,#059669,#047857)">
+        <article class="proj-card reveal" data-cat="food" style="--c:linear-gradient(90deg,#2f5d3a,#4a6741)">
           <div class="proj-stripe"></div>
           <div class="proj-body">
             <div class="proj-head"><div><div class="proj-domain">Food Brand</div><div class="proj-name">Al Wefaq Foods</div></div><div class="proj-icon">🥗</div></div>
@@ -1193,7 +1195,7 @@
           </div>
         </article>
 
-        <article class="proj-card reveal d1" data-cat="desk" style="--c:linear-gradient(90deg,#f59e0b,#f472b6)">
+        <article class="proj-card reveal d1" data-cat="desk" style="--c:linear-gradient(90deg,#c4a574,#8fad7a)">
           <div class="proj-stripe"></div>
           <div class="proj-body">
             <div class="proj-head"><div><div class="proj-domain">Desktop</div><div class="proj-name">Proposal Desktop</div></div><div class="proj-icon">📄</div></div>
@@ -1202,7 +1204,7 @@
           </div>
         </article>
 
-        <article class="proj-card reveal d2" data-cat="ecom" style="--c:linear-gradient(90deg,#10b981,#06b6d4)">
+        <article class="proj-card reveal d2" data-cat="ecom" style="--c:linear-gradient(90deg,#4a7c59,#5c7a4a)">
           <div class="proj-stripe"></div>
           <div class="proj-body">
             <div class="proj-head"><div><div class="proj-domain">On-Demand Services</div><div class="proj-name">Horse Time</div></div><div class="proj-icon">🐴</div></div>
@@ -1215,7 +1217,7 @@
           </div>
         </article>
 
-        <article class="proj-card reveal" data-cat="ecom" style="--c:linear-gradient(90deg,#0891b2,#10b981)">
+        <article class="proj-card reveal" data-cat="ecom" style="--c:linear-gradient(90deg,#5c7a4a,#8fad7a)">
           <div class="proj-stripe"></div>
           <div class="proj-body">
             <div class="proj-head"><div><div class="proj-domain">Industrial</div><div class="proj-name">Al Rassi</div></div><div class="proj-icon">🏭</div></div>
@@ -1228,7 +1230,7 @@
           </div>
         </article>
 
-        <article class="proj-card reveal d1" data-cat="oss" style="--c:linear-gradient(90deg,#f43f5e,#f472b6)">
+        <article class="proj-card reveal d1" data-cat="oss" style="--c:linear-gradient(90deg,#6b9b78,#4a7c59)">
           <div class="proj-stripe"></div>
           <div class="proj-body">
             <div class="proj-head"><div><div class="proj-domain">Open Source · pub.dev</div><div class="proj-name">animated_contact_us</div></div><div class="proj-icon">📦</div></div>
@@ -1241,7 +1243,7 @@
           </div>
         </article>
 
-        <article class="proj-card reveal d2" data-cat="oss" style="--c:linear-gradient(90deg,#f472b6,#06b6d4)">
+        <article class="proj-card reveal d2" data-cat="oss" style="--c:linear-gradient(90deg,#8fad7a,#c4a574)">
           <div class="proj-stripe"></div>
           <div class="proj-body">
             <div class="proj-head"><div><div class="proj-domain">Open Source · pub.dev</div><div class="proj-name">liquid_wave_indicator</div></div><div class="proj-icon">🌊</div></div>
@@ -1578,7 +1580,7 @@
     addEventListener('resize', resize);
     addEventListener('pointermove', e => { mouse.x = e.clientX * dpr; mouse.y = e.clientY * dpr; }, { passive: true });
     addEventListener('pointerleave', () => { mouse.x = mouse.y = -999; });
-    function rgb() { return root.classList.contains('light') ? '5,150,105' : '52,211,153'; }
+    function rgb() { return root.classList.contains('light') ? '61,107,79' : '107,155,120'; }
     function frame() {
       ctx.clearRect(0, 0, w, h);
       const c = rgb();
@@ -1711,7 +1713,7 @@
 
   /* ── CLICK PARTICLE BURST ── */
   if (fine) {
-    const COLORS = ['#10b981', '#06b6d4', '#a3e635', '#34d399', '#f59e0b'];
+    const COLORS = ['#4a7c59', '#5c7a4a', '#6b9b78', '#8fad7a', '#c4a574'];
     addEventListener('pointerdown', e => {
       if (e.target.closest('input,textarea')) return;
       const n = 12;
