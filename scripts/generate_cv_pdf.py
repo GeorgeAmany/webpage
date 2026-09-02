@@ -21,6 +21,58 @@ OUTPUT = ROOT / "assets" / "George_Amany_CV_2026.pdf"
 
 ACCENT = colors.HexColor("#0f766e")
 MUTED = colors.HexColor("#475569")
+LINK = "#0f766e"
+
+CONTACT_LINKS = {
+    "email": "mailto:georgeamany5@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/george-amany-53b148219/",
+    "github": "https://github.com/GeorgeAmany",
+}
+
+PROJECT_LINKS = {
+    "Noor Institute": [
+        ("Google Play", "https://play.google.com/store/apps/details?id=com.softera.noor_academy"),
+        ("App Store", "https://apps.apple.com/eg/app/noor-institute/id6463731504"),
+    ],
+    "Schupply": [
+        ("Google Play", "https://play.google.com/store/apps/details?id=com.schupply.app"),
+    ],
+    "Binge": [
+        ("Google Play", "https://play.google.com/store/apps/details?id=com.jigsaw.binge&hl=ar"),
+    ],
+    "Al Wefaq Foods": [
+        ("Google Play", "https://play.google.com/store/apps/details?id=com.alwefaqfoods.app"),
+    ],
+    "Horse Time": [
+        ("Google Play", "https://play.google.com/store/apps/details?id=com.horsetime.user&hl=en"),
+        ("App Store", "https://apps.apple.com/eg/app/horse-time/id6758008343"),
+    ],
+    "Al Rassi": [
+        ("Google Play", "https://play.google.com/store/apps/details?id=com.appsbunches.alrassiapp"),
+        ("App Store", "https://apps.apple.com/eg/app/%D8%A7%D9%84%D8%B1%D8%B3%D9%8A-%D9%84%D9%84%D8%A7%D8%B4%D8%AC%D8%A7%D8%B1-%D8%A7%D9%84%D8%B5%D9%86%D8%A7%D8%B9%D9%8A%D8%A9/id6736564188"),
+    ],
+    "animated_contact_us": [
+        ("pub.dev", "https://pub.dev/packages/animated_contact_us"),
+        ("GitHub", "https://github.com/GeorgeAmany/animated_contact_us"),
+    ],
+    "liquid_wave_indicator": [
+        ("pub.dev", "https://pub.dev/packages/liquid_wave_indicator"),
+        ("GitHub", "https://github.com/GeorgeAmany/liquid_wave_indicator"),
+    ],
+}
+
+PACKAGE_LINKS = {
+    "animated_contact_us": "https://pub.dev/packages/animated_contact_us",
+    "liquid_wave_indicator": "https://pub.dev/packages/liquid_wave_indicator",
+}
+
+
+def link(label, url):
+    return f'<a href="{url}" color="{LINK}">{label}</a>'
+
+
+def link_row(items):
+    return " · ".join(link(label, url) for label, url in items)
 
 
 def build_styles():
@@ -154,12 +206,14 @@ def main():
     story = [
         Paragraph("George Amany", styles["name"]),
         Paragraph(
-            "Senior Flutter Developer | Mobile &amp; Desktop Cross-Platform Engineer",
+            "Mid Flutter Developer | Mobile &amp; Desktop Cross-Platform Engineer",
             styles["title"],
         ),
         Paragraph(
-            "Cairo, Egypt | georgeamany5@gmail.com | +20 127 003 7845<br/>"
-            "linkedin.com/in/george-amany-53b148219 | github.com/GeorgeAmany",
+            "Cairo, Egypt | "
+            f'{link("georgeamany5@gmail.com", CONTACT_LINKS["email"])} | +20 127 003 7845<br/>'
+            f'{link("LinkedIn", CONTACT_LINKS["linkedin"])} | '
+            f'{link("GitHub", CONTACT_LINKS["github"])}',
             styles["contact"],
         ),
         Paragraph("Professional Summary", styles["section"]),
@@ -190,12 +244,12 @@ def main():
         bullets(
             [
                 "Shipped production Flutter apps across education, e-commerce, food, and influencer marketing with feature-first Clean Architecture.",
-                "Led Fuse (185+ commits): dual-app architecture for agencies and influencers with Cubit, Injectable DI, Freezed, Dio, Firebase, and Storyly.",
-                "Built Taleem student and employee apps (300+ combined commits): REST v2 API, Quran SQLite databases, attendance/memorization modules, and GitHub Actions CI on Flutter 3.35.7.",
-                "Enhanced Noor Institute (v3.7.0, 63+ commits): Stripe payments, Pusher real-time chat, Floor local DB, Retrofit API, and Firebase push.",
+                "Led Fuse: dual-app architecture for agencies and influencers with Cubit, Injectable DI, Freezed, Dio, Firebase, and Storyly.",
+                "Built Taleem student and employee apps for Islamic education: REST API integration, Quran SQLite databases, attendance/memorization modules, and GitHub Actions CI for automated APK builds.",
+                "Enhanced Noor Institute: Stripe payments, Pusher real-time chat, Floor local DB, Retrofit API, and Firebase push notifications.",
                 "Delivered desktop apps: Zahran POS (offline invoice sync, PDF printing, Hive) and Proposal Desktop (PDF document builder with flutter_bloc).",
                 "Integrated REST APIs, Firebase, social auth, maps, and payment gateways across Schupply, Zahran, Binge, and Al Wefaq Foods.",
-                "Published open-source packages on pub.dev: animated_contact_us (v0.0.8) and liquid_wave_indicator (v0.2.2).",
+                f'Published open-source packages on pub.dev: {link("animated_contact_us", PACKAGE_LINKS["animated_contact_us"])} and {link("liquid_wave_indicator", PACKAGE_LINKS["liquid_wave_indicator"])}.',
                 "Mentor interns and junior developers on Flutter, Clean Architecture, code review, and shipping first production features.",
             ],
             styles["bullet"],
@@ -213,17 +267,28 @@ def main():
     ]
 
     projects = [
-        ("Noor Institute", "Education — Google Play & App Store"),
-        ("Fuse", "Influencer marketing — dual-role mobile platform"),
-        ("Taleem (Student & Employees)", "Islamic education — REST API, Quran SQLite, GitHub Actions CI"),
-        ("Schupply", "School supplies e-commerce — Google Play"),
-        ("Zahran (Mobile & Desktop POS)", "E-commerce & POS — offline sync, PDF printing"),
-        ("Binge", "Food subscription — Firebase Analytics, Amazon Payment Services"),
-        ("Horse Time", "On-demand booking — chat, maps, multi-gateway payments"),
-        ("animated_contact_us & liquid_wave_indicator", "Open-source packages on pub.dev"),
+        ("Noor Institute", "Education — production app on Google Play & App Store", "Noor Institute"),
+        ("Fuse", "Influencer marketing — dual-role mobile platform", None),
+        ("Taleem (Student & Employees)", "Islamic education — REST API, Quran SQLite, GitHub Actions CI", None),
+        ("Schupply", "School supplies e-commerce", "Schupply"),
+        ("Zahran (Mobile & Desktop POS)", "E-commerce & POS — offline sync, PDF printing", None),
+        ("Binge", "Food subscription — Firebase Analytics, Amazon Payment Services", "Binge"),
+        ("Al Wefaq Foods", "Food brand mobile app", "Al Wefaq Foods"),
+        ("Horse Time", "On-demand booking — chat, maps, multi-gateway payments", "Horse Time"),
+        ("Al Rassi", "Industrial / manufacturing production app", "Al Rassi"),
+        (
+            "animated_contact_us & liquid_wave_indicator",
+            "Open-source Flutter packages on pub.dev",
+            "animated_contact_us",
+        ),
     ]
-    for name, desc in projects:
-        story.append(Paragraph(f"{name} — {desc}", styles["body"]))
+    for name, desc, link_key in projects:
+        line = f"<b>{name}</b> — {desc}"
+        if link_key == "animated_contact_us":
+            line += "<br/>" + link_row(PROJECT_LINKS["animated_contact_us"]) + " · " + link_row(PROJECT_LINKS["liquid_wave_indicator"])
+        elif link_key and link_key in PROJECT_LINKS:
+            line += "<br/>" + link_row(PROJECT_LINKS[link_key])
+        story.append(Paragraph(line, styles["body"]))
 
     story.extend(
         [

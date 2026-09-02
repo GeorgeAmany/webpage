@@ -1,5 +1,5 @@
-GEORGE AMANY — Senior Flutter Developer
-Detailed Senior-Level CV (Evidence-Based)
+GEORGE AMANY — Mid Flutter Developer
+Detailed Mid-Level CV (Evidence-Based)
 
 ═══════════════════════════════════════════════════════════════
 CONTACT
@@ -10,7 +10,7 @@ GitHub: github.com/GeorgeAmany
 ═══════════════════════════════════════════════════════════════
 EXECUTIVE SUMMARY
 
-Senior Flutter engineer with 2+ years of professional production experience at Neural Design Studios, delivering cross-platform mobile and desktop applications across education, e-commerce, food services, influencer marketing, and on-demand services. Demonstrates consistent application of Clean Architecture, repository patterns, dependency injection, and typed REST clients. Primary contributor on multiple codebases with 630+ documented commits across flagship projects. Published production apps to Google Play and the App Store and authored open-source packages on pub.dev.
+Mid Flutter engineer with 2+ years of professional production experience at Neural Design Studios, delivering cross-platform mobile and desktop applications across education, e-commerce, food services, influencer marketing, and on-demand services. Demonstrates consistent application of Clean Architecture, repository patterns, dependency injection, and typed REST clients. Primary contributor on multiple codebases with 630+ documented commits across flagship projects. Published production apps to Google Play and the App Store and authored open-source packages on pub.dev.
 
 ═══════════════════════════════════════════════════════════════
 TECHNICAL PROFILE

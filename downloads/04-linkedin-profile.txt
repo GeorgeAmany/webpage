@@ -1,5 +1,5 @@
 LINKEDIN HEADLINE
-Senior Flutter Developer | Clean Architecture | Mobile & Desktop | Firebase & REST APIs | Published Apps on Play Store & App Store | Open Source (pub.dev)
+Mid Flutter Developer | Clean Architecture | Mobile & Desktop | Firebase & REST APIs | Published Apps on Play Store & App Store | Open Source (pub.dev)
 
 ---
 
