@@ -27,7 +27,7 @@ CONTACT_LINKS = {
     "email": "mailto:georgeamany5@gmail.com",
     "linkedin": "https://www.linkedin.com/in/george-amany-53b148219/",
     "github": "https://github.com/GeorgeAmany",
-    "portfolio": "https://georgeamany.github.io/George_Amany/",
+    "portfolio": "https://webpage-beta-nine.vercel.app/",
 }
 
 PROJECT_LINKS = {
