@@ -16,6 +16,7 @@ CONTACT_LINKS = {
     "email": "mailto:georgeamany5@gmail.com",
     "linkedin": "https://www.linkedin.com/in/george-amany-53b148219/",
     "github": "https://github.com/GeorgeAmany",
+    "portfolio": "https://georgeamany.github.io/George_Amany/",
 }
 
 PROJECT_LINKS = {
@@ -107,6 +108,8 @@ contact.add_run(" | +20 127 003 7845 | ")
 add_hyperlink(contact, CONTACT_LINKS["linkedin"], "LinkedIn")
 contact.add_run(" | ")
 add_hyperlink(contact, CONTACT_LINKS["github"], "GitHub")
+contact.add_run(" | ")
+add_hyperlink(contact, CONTACT_LINKS["portfolio"], "Portfolio")
 
 doc.add_paragraph()
 

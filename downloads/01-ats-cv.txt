@@ -1,7 +1,7 @@
 GEORGE AMANY
 Mid Flutter Developer | Mobile & Desktop Cross-Platform Engineer
 Cairo, Egypt | georgeamany5@gmail.com | +20 127 003 7845
-LinkedIn: linkedin.com/in/george-amany-53b148219 | GitHub: github.com/GeorgeAmany
+LinkedIn: linkedin.com/in/george-amany-53b148219 | GitHub: github.com/GeorgeAmany | Portfolio: georgeamany.github.io/George_Amany
 
 PROFESSIONAL SUMMARY
 Flutter Developer with Bachelor's degree in Computer Science and production experience shipping mobile and desktop applications. Expertise in Clean Architecture, BLoC/Cubit state management, REST API integration (Dio, Retrofit), Firebase, local storage (Hive, Floor, SQLite), cross-platform desktop (macOS, Windows), payment integrations (Stripe, Amazon Payment Services), and CI/CD (GitHub Actions). Published apps on Google Play and App Store. Author of pub.dev packages animated_contact_us and liquid_wave_indicator.

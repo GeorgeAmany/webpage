@@ -27,6 +27,7 @@ CONTACT_LINKS = {
     "email": "mailto:georgeamany5@gmail.com",
     "linkedin": "https://www.linkedin.com/in/george-amany-53b148219/",
     "github": "https://github.com/GeorgeAmany",
+    "portfolio": "https://georgeamany.github.io/George_Amany/",
 }
 
 PROJECT_LINKS = {
@@ -213,7 +214,8 @@ def main():
             "Cairo, Egypt | "
             f'{link("georgeamany5@gmail.com", CONTACT_LINKS["email"])} | +20 127 003 7845<br/>'
             f'{link("LinkedIn", CONTACT_LINKS["linkedin"])} | '
-            f'{link("GitHub", CONTACT_LINKS["github"])}',
+            f'{link("GitHub", CONTACT_LINKS["github"])} | '
+            f'{link("Portfolio", CONTACT_LINKS["portfolio"])}',
             styles["contact"],
         ),
         Paragraph("Professional Summary", styles["section"]),
